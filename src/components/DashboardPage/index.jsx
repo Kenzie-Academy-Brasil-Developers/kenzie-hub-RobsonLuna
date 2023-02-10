@@ -9,13 +9,16 @@ import { api } from "../services/api";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import { CreateModal } from "./style";
 
 export function DashboardPage({ setUserdata, userData }) {
   const [editModal, setEditModal] = useState(false);
   const [editTech, SetEditTech] = useState();
+  const [createModal, setCreateModal] = useState(false)
 
   const formSchema = yup.object().shape({
     status: yup.string().required("Informe seu status"),
+    title: yup.string().required("Informe uma tecnologia"),
   });
 
   const {
@@ -48,79 +51,107 @@ export function DashboardPage({ setUserdata, userData }) {
         },
       });
 
-      toast.success("Alteração realizada com sucesso!")
+      toast.success("Alteração realizada com sucesso!");
     } catch (error) {}
   }
 
   async function deleteTechRequest() {
     console.log(editTech);
+    let token = window.localStorage.getItem("@TOKEN");
+    token = JSON.parse(token);
     try {
-      const reponse = await api.delete(`/users/techs/${editTech.id}`)
-    } catch (error) {
+      const reponse = await api.delete(`/users/techs/${editTech.id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      toast.success("Item deletado com sucesso!");
+    } catch (error) {}
+  }
 
-    }
+  async function createTechRequest(){
+    setCreateModal(true)
   }
 
   return (
     <>
-    <main>
-
-    
-      <header>
-        <img alt="Logo Kenzie Hub" src={Logo}></img>
-        <button>Sair</button>
-      </header>
-      <SectionUser>
-        <h2>Olá,{userData.user.name} </h2>
-        <h2>Olá,{userData.user.name} </h2>
-
-        <p>{userData.user.course_module}</p>
-      </SectionUser>
-
-      <section>
+      <main>
         <header>
-          <h2>Tecnologias</h2>
-          <button>+</button>
+          <img alt="Logo Kenzie Hub" src={Logo}></img>
+          <button>Sair</button>
         </header>
+        <SectionUser>
+          <h2>Olá,{userData.user.name} </h2>
+          <h2>Olá,{userData.user.name} </h2>
 
-        <ul>
-          {userData.user.techs.map((element) => {
-            return (
-              <li key={uuid()} onClick={() => showEditModal(element)}>
-                <p>{element.title}</p>
-                <p>{element.status}</p>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
+          <p>{userData.user.course_module}</p>
+        </SectionUser>
 
-      {editModal ? (
-        <>
-          <EditModal>
-            <header>
-              <h2>Tecnologia Detalhes</h2>
-              <span>X</span>
-            </header>
-            <main>
-              <p>Nome do projeto</p>
-              <p>{editTech.title}</p>
-              <p>status</p>
-              <form onSubmit={handleSubmit(editTechRequest)}>
+        <section>
+          <header>
+            <h2>Tecnologias</h2>
+            <button onClick={createTechRequest}>+</button>
+          </header>
+
+          <ul>
+            {userData.user.techs.map((element) => {
+              return (
+                <li key={uuid()} onClick={() => showEditModal(element)}>
+                  <p>{element.title}</p>
+                  <p>{element.status}</p>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+
+        {createModal? (
+          <>
+          <CreateModal>
+          <header>
+                <h2>Cadastrar tecnologia</h2>
+                <span>X</span>
+              </header>
+              <main>
+                <p>Nome</p>
+                <input type="text" placeholder="Digite a tecnologia" {...register("title")}></input>
+                <p>Selecionar status</p>
                 <select {...register("status")}>
-                  <option value="Iniciante">Iniciante</option>
-                  <option value="Intermediário">Intermediário</option>
-                  <option value="Avançado">Avançado</option>
-                </select>
-                <button type="submit">Salvar Alterações</button>
-              </form>
-              <button onClick={deleteTechRequest}>Excluir</button>
-            </main>
-          </EditModal>
-        </>
-      ) : (
-        <> </>
-      )}
+                    <option value="Iniciante">Iniciante</option>
+                    <option value="Intermediário">Intermediário</option>
+                    <option value="Avançado">Avançado</option>
+                  </select>
+              </main>
+          </CreateModal>
+          </>
+        ): (<> </>)}    
+        {editModal ? (
+          <>
+            <EditModal>
+              <header>
+                <h2>Tecnologia Detalhes</h2>
+                <span>X</span>
+              </header>
+              <main>
+                <p>Nome do projeto</p>
+                <p>{editTech.title}</p>
+                <p>status</p>
+                <form onSubmit={handleSubmit(editTechRequest)}>
+                  <select {...register("status")}>
+                    <option value="Iniciante">Iniciante</option>
+                    <option value="Intermediário">Intermediário</option>
+                    <option value="Avançado">Avançado</option>
+                  </select>
+                  <button type="submit">Salvar Alterações</button>
+                </form>
+                <button onClick={deleteTechRequest}>Excluir</button>
+              </main>
+            </EditModal>
+          </>
+        ) : (
+          <> </>
+        )}
       </main>
     </>
   );
