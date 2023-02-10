@@ -11,12 +11,12 @@ import { useEffect, useState } from 'react';
 
 function App() {
 
- const [userData,setUserData] = useState()
+ const [userData,setUserData] = useState(null)
 
  
- useEffect(()=> {
-  console.log(userData)
- },[userData])  
+//  useEffect(()=> {
+//   console.log(userData)
+//  },[userData])  
 
   return (
    <>

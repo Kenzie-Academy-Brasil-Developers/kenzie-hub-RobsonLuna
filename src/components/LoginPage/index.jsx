@@ -38,7 +38,8 @@ export function LoginPage({setUserData}) {
       window.localStorage.setItem("@TOKEN", JSON.stringify(response.data.token));
       window.localStorage.setItem("@USERID", JSON.stringify(response.data.user.id));
     //   console.log(response.data.token);
-      setUserData(response.data)
+      setUserData(response.data.user)
+      console.log(response.data.user)
     
       navigate("/dashboard")
     //   toast.success("Login efetuado!")  
