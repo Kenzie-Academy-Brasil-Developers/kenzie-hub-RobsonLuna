@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 
 function App() {
 
- const [userData,setUserData] = useState(null)
+ const [userData,setUserData] = useState()
 
  
  useEffect(()=> {
