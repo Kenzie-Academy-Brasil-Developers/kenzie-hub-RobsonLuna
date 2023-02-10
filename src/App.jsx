@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 
 function App() {
 
- const [userData,setUserData] = useState({})
+ const [userData,setUserData] = useState(null)
 
  
  useEffect(()=> {
@@ -24,7 +24,7 @@ function App() {
    <Routes>
     <Route path="/" element={<LoginPage setUserData={setUserData}/>}> </Route>
     <Route path="/register" element={<RegisterPage/>}></Route>
-    <Route path="/dashboard" element={<DashboardPage/>}></Route>
+    <Route path="/dashboard" element={<DashboardPage setUserData={setUserData} userData={userData}/>}></Route>
     
    </Routes>
    <ToastContainer/>

@@ -35,7 +35,8 @@ export function LoginPage({setUserData}) {
       const response = await api.post("/sessions", data);
 
       window.localStorage.clear();
-      window.localStorage.setItem("token", JSON.stringify(response.data.token));
+      window.localStorage.setItem("@TOKEN", JSON.stringify(response.data.token));
+      window.localStorage.setItem("@USERID", JSON.stringify(response.data.user.id));
     //   console.log(response.data.token);
       setUserData(response.data)
     
