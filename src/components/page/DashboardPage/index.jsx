@@ -10,6 +10,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { CreateModal } from "./style";
+import Input from "../../Input";
 
 export function DashboardPage({ setUserData, userData }) {
   const [editModal, setEditModal] = useState(false);
@@ -187,12 +188,12 @@ export function DashboardPage({ setUserData, userData }) {
                 <main>
                   <form onSubmit={handleSubmit(createTechRequest)}>
                     <p>Nome</p>
-                    <input
+                    <Input
                       type="text"
                       placeholder="Digite a tecnologia"
                       {...register("title")}
-                    ></input>
-                    <p>{errors.title?.message}</p>
+                      error={errors.title?.message}
+                    ></Input>
                     <p>Selecionar status</p>
                     <select {...register("status")}>
                       <option value="Iniciante">Iniciante</option>
@@ -217,8 +218,8 @@ export function DashboardPage({ setUserData, userData }) {
                 <main>
                   <form onSubmit={handleSubmit(editTechRequest)}>
                     <p>Nome do projeto</p>
-                    <input
-                      value={editTech.title}
+                    <Input
+                      inputValue={editTech.title}
                       disabled={true}
                       {...register("title")}
                       placeholder={editTech.title}

@@ -7,6 +7,12 @@ import { api } from "../../services/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Input from "../../Input";
+import { Form, FormLogin } from "../../FormLogin";
+import { BackgroundPage,LogoKenzie, RegisterTitle } from "./style";
+import { Label } from "../../Label";
+import { Button } from "../../Button";
+import { MainContainer } from "./style";
+import { FormTitle } from "./style";
 
 export function LoginPage({ setUserData }) {
   //função (objeto)
@@ -51,8 +57,6 @@ export function LoginPage({ setUserData }) {
     } catch (error) {
       toast.error(error.response.data.message);
       reset();
-    } finally {
-      // console.log(error.)
     }
   }
 
@@ -63,39 +67,42 @@ export function LoginPage({ setUserData }) {
   }
   return (
     <>
-      <img alt="Logo Kenzie Hub" src={Logo}></img>
+      <BackgroundPage>
+        <LogoKenzie alt="Logo Kenzie Hub" src={Logo} />
+        <MainContainer> 
+          <FormTitle>Login</FormTitle>
 
-      <h2>Login</h2>
+          <form styled="formLoginPage" onSubmit={handleSubmit(loginForm)}>
+            <InputAlign>
+              <Label htmlFor="email" text="Email"></Label>
 
-      <form onSubmit={handleSubmit(loginForm)}>
-        <InputAlign>
-          <label htmlFor="email">Email</label>
+              <Input
+                id="email"
+                type="text"
+                placeholder="Digite seu Email"
+                {...register("email")}
+                error={errors.email?.message}
+              />
+            </InputAlign>
 
-          <Input
-            id="email"
-            type="text"
-            placeholder="Digite seu Email"
-            {...register("email")}
-          />
-          <p>{errors.email?.message}</p>
-        </InputAlign>
+            <InputAlign>
+              <Label htmlFor="password" text="Senha"></Label>
+              <Input
+                id="password"
+                type="password"
+                placeholder="Digite sua senha"
+                {...register("password")}
+                error={errors.password?.message}
+              />
+            </InputAlign>
 
-        <InputAlign>
-          <label htmlFor="password">Senha</label>
-          <input
-            id="password"
-            type="text"
-            placeholder="Digite sua senha"
-            {...register("password")}
-          />
-          <p>{errors.password?.message}</p>
-        </InputAlign>
+            <Button type="submit" text="Entrar" styled="Login">Entrar</Button>
+          </form>
 
-        <button type="submit">Entrar</button>
-      </form>
-
-      <p>Ainda não tem conta?</p>
-      <button onClick={registerPage}>Cadastre-se</button>
+          <RegisterTitle >Ainda não tem conta?</RegisterTitle>
+          <Button click={registerPage}  text="Cadastre-se" styled="RegisterPage" ></Button>
+        </MainContainer>
+      </BackgroundPage>
     </>
   );
 }

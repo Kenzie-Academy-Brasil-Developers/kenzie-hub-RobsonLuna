@@ -54,4 +54,17 @@ table {
 *{
 font-family: 'Inter', sans-serif;
 }
+
+:root{
+	--primary:#FF577F;
+	--primary-Focus:#FF427F;
+	--primary-Negative:#59323F;
+	--grey-4:#121214;
+	--grey-3:#212529;
+	--grey-2:#343B41;
+	--grey-1:#868E96;
+	--grey-0:#F8F9FA;
+	--title1:16px;
+	--title2:12px;
+}
 `

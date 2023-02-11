@@ -6,6 +6,7 @@ import { api } from "../../services/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { InputTextAlign } from "./style";
+import { Select } from "../../Select";
 
 export function RegisterPage() {
   const navigate=useNavigate()
