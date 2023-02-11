@@ -1,11 +1,11 @@
-import Logo from "../img/logoKenzieHub.svg";
+import Logo from "../../img/logoKenzieHub.svg";
 import { SectionUser } from "./style";
 import { v4 as uuid } from "uuid";
 import { useEffect, useState } from "react";
 import { EditModal } from "./style";
 import { Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { api } from "../services/api";
+import { api } from "../../services/api";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -15,7 +15,6 @@ export function DashboardPage({ setUserData, userData }) {
   const [editModal, setEditModal] = useState(false);
   const [editTech, SetEditTech] = useState();
   const [createModal, setCreateModal] = useState(false);
-
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -39,13 +38,12 @@ export function DashboardPage({ setUserData, userData }) {
 
   const formSchema = yup.object().shape({
     status: yup.string().required("Informe seu status"),
-     title: yup.string().required()
+    title: yup.string().required(),
   });
 
   const {
     register,
     handleSubmit,
-    unregister,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(formSchema),
@@ -55,6 +53,7 @@ export function DashboardPage({ setUserData, userData }) {
     // console.log(element);
     setEditModal(true);
     SetEditTech(element);
+    console.log(editTech);
   }
 
   async function updateUser() {
@@ -72,13 +71,13 @@ export function DashboardPage({ setUserData, userData }) {
   }
 
   async function editTechRequest(data) {
-    console.log("clicou")
-    console.log(editTech)
+    console.log("clicou");
+    console.log(editTech);
     console.log(editTech.id);
     console.log(data);
     let token = window.localStorage.getItem("@TOKEN");
     token = JSON.parse(token);
-    console.log(data)
+    console.log(data);
     console.log(token);
 
     try {
@@ -88,11 +87,9 @@ export function DashboardPage({ setUserData, userData }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      updateUser()
+      updateUser();
       toast.success("Alteração realizada com sucesso!");
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   }
 
   async function deleteTechRequest() {
@@ -108,7 +105,7 @@ export function DashboardPage({ setUserData, userData }) {
       });
       toast.success("Item deletado com sucesso!");
       updateUser();
-      closeEditModal()
+      closeEditModal();
     } catch (error) {}
   }
 
@@ -143,13 +140,18 @@ export function DashboardPage({ setUserData, userData }) {
     }
   }
 
+  function logOut() {
+    window.localStorage.clear();
+    navigate("/");
+  }
+
   return (
     <>
       {userData && (
         <main>
           <header>
             <img alt="Logo Kenzie Hub" src={Logo}></img>
-            <button>Sair</button>
+            <button onClick={logOut}>Sair</button>
           </header>
           <SectionUser>
             <h2>Olá,{userData.name} </h2>
@@ -214,9 +216,15 @@ export function DashboardPage({ setUserData, userData }) {
                 </header>
                 <main>
                   <form onSubmit={handleSubmit(editTechRequest)}>
-                  <p>Nome do projeto</p>
-                  <input defaultValue={editTech.title} readOnly {...register("title")}/>
-                  <p>status</p>
+                    <p>Nome do projeto</p>
+                    <input
+                      value={editTech.title}
+                      disabled={true}
+                      {...register("title")}
+                      placeholder={editTech.title}
+                    />
+
+                    <p>status</p>
                     <select {...register("status")}>
                       <option value="Iniciante">Iniciante</option>
                       <option value="Intermediário">Intermediário</option>
