@@ -45,5 +45,24 @@ line-height: 26px;
 
 color: var(--grey-0);
 
+`
 
+export const ButtonBack = styled.button`
+background: #212529;
+border-radius: 4px;
+height:40;
+width:67px;
+border:none;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 28px;
+/* identical to box height, or 237% */
+
+text-align: center;
+
+/* grey-0 */
+
+color: var(--grey-0);
 `

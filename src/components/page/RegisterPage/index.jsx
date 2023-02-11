@@ -7,9 +7,13 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { InputTextAlign } from "./style";
 import { Select } from "../../Select";
+import { BackgroundPage, LogoKenzie } from "../LoginPage/style";
+import { HeaderContainer, ContainerContentAlign, MainContainerContent, FormTitle, FormDescription } from "./style";
+import { Button } from "../../Button";
+import { Label } from "../../Label";
 
 export function RegisterPage() {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const formSchema = yup.object().shape({
     name: yup.string().required("Digite seu nome"),
@@ -30,7 +34,6 @@ export function RegisterPage() {
       ),
     bio: yup.string().required("Escreva um pouco sobre você"),
     contact: yup.string().required("Informe uma forma de contato"),
-
   });
 
   const {
@@ -43,120 +46,131 @@ export function RegisterPage() {
   });
 
   async function registerFormSend(data) {
-    console.log(data)
+    console.log(data);
 
     try {
-       const response = await api.post("/users",data)
+      const response = await api.post("/users", data);
 
-       navigate("/")
-      toast.success("Conta criada com sucesso!")  
+      navigate("/");
+      toast.success("Conta criada com sucesso!");
     } catch (error) {
       toast.error(error.response.data.message);
     }
   }
 
-  function previousPage(){
-    navigate(-1)
+  function previousPage() {
+    navigate(-1);
   }
 
   return (
     <>
-      <header>
-        <img alt="Logo Kenzie Hub" src={Logo} />
-        <button onClick={previousPage}>Voltar</button>
-      </header>
+      <BackgroundPage>
+        
+      <ContainerContentAlign>
 
-      <h2>Crie sua conta</h2>
-      <p>Rápido e grátis, vamos nessa</p>
+      
+          <HeaderContainer>
+            <LogoKenzie alt="Logo Kenzie Hub" src={Logo} />
+            <Button click={previousPage} text="Voltar" styled="ButtonBack"></Button>
+          </HeaderContainer>
 
-      <form onSubmit={handleSubmit(registerFormSend)}>
-        <InputTextAlign>
-          <label htmlFor="name">Nome</label>
-          <input
-            id="name"
-            placeholder="Digite aqui seu nome"
-            type="text"
-            {...register("name")}
-          ></input>
-          <p>{errors.name?.message}</p>
-        </InputTextAlign>
+        <MainContainerContent>
 
-        <InputTextAlign>
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            placeholder="Digite aqui seu email"
-            type="text"
-            {...register("email")}
-          ></input>
-          <p>{errors.email?.message}</p>
-        </InputTextAlign>
 
-        <InputTextAlign>
-          <label htmlFor="password">Senha</label>
-          <input
-            id="password"
-            placeholder="Digite aqui sua senha"
-            type="password"
-            {...register("password")}
-          ></input>
-          <p>{errors.password?.message}</p>
-        </InputTextAlign>
+          <FormTitle>Crie sua conta</FormTitle>
+          <FormDescription>Rápido e grátis, vamos nessa</FormDescription>
 
-        <InputTextAlign>
-          <label htmlFor="confirmPassword">Confirmar Senha</label>
-          <input
-            id="confirmPassword"
-            placeholder="Digite aqui sua senha"
-            type="password"
-            {...register("confirmPassword")}
-          ></input>
-          <p>{errors.confirmPassword?.message}</p>
-        </InputTextAlign>
+          <form onSubmit={handleSubmit(registerFormSend)}>
+            <InputTextAlign>
+              <Label htmlFor="name" text="Nome"></Label>
+              <input
+                id="name"
+                placeholder="Digite aqui seu nome"
+                type="text"
+                {...register("name")}
+              ></input>
+              <p>{errors.name?.message}</p>
+            </InputTextAlign>
 
-        <InputTextAlign>
-          <label htmlFor="bio">Bio</label>
-          <input
-            id="bio"
-            placeholder="Fale sobre você"
-            type="text"
-            {...register("bio")}
-          ></input>
-          <p>{errors.bio?.message}</p>
-        </InputTextAlign>
+            <InputTextAlign>
+              <Label htmlFor="email" text="Email"></Label>
+              <input
+                id="email"
+                placeholder="Digite aqui seu email"
+                type="text"
+                {...register("email")}
+              ></input>
+              <p>{errors.email?.message}</p>
+            </InputTextAlign>
 
-        <InputTextAlign>
-          <label htmlFor="contact">Contato</label>
-          <input
-            id="contact"
-            placeholder="Opção de contato"
-            type="text"
-            {...register("contact")}
-          ></input>
-          <p>{errors.contact?.message}</p>
-        </InputTextAlign>
+            <InputTextAlign>
+              <Label htmlFor="password" text="Senha"></Label>
+              <input
+                id="password"
+                placeholder="Digite aqui sua senha"
+                type="password"
+                {...register("password")}
+              ></input>
+              <p>{errors.password?.message}</p>
+            </InputTextAlign>
 
-        <InputTextAlign>
-          <label htmlFor="course_module">Módulo</label>
-          <select id="course_module" {...register("course_module")}>
-            <option value="Primeiro módulo (Introdução ao Frontend)">
-              Primeiro Módulo
-            </option>
-            <option value="Segundo módulo (Frontend Avançado)">
-              Segundo Módulo
-            </option>
-            <option value="Terceiro módulo (Introdução ao Backend)">
-              Terceiro Módulo
-            </option>
-            <option value="Quarto módulo (Backend Avançado)">
-              Quarto Módulo
-            </option>
-          </select>
-          <p>{errors.course_module?.message}</p>
-        </InputTextAlign>
+            <InputTextAlign>
+              <Label htmlFor="confirmPassword" text="Confirmar Senha"></Label>
+              <input
+                id="confirmPassword"
+                placeholder="Digite aqui sua senha"
+                type="password"
+                {...register("confirmPassword")}
+              ></input>
+              <p>{errors.confirmPassword?.message}</p>
+            </InputTextAlign>
 
-        <button type="submit">Cadastrar</button>
-      </form>
+            <InputTextAlign>
+              <Label htmlFor="bio" text="Bio">Bio</Label>
+              <input
+                id="bio"
+                placeholder="Fale sobre você"
+                type="text"
+                {...register("bio")}
+              ></input>
+              <p>{errors.bio?.message}</p>
+            </InputTextAlign>
+
+            <InputTextAlign>
+              <Label htmlFor="contact" text="Contato"></Label>
+              <input
+                id="contact"
+                placeholder="Opção de contato"
+                type="text"
+                {...register("contact")}
+              ></input>
+              <p>{errors.contact?.message}</p>
+            </InputTextAlign>
+
+            <InputTextAlign>
+              <Label htmlFor="course_module" text="Módulo"></Label>
+              <select id="course_module" {...register("course_module")}>
+                <option value="Primeiro módulo (Introdução ao Frontend)">
+                  Primeiro Módulo
+                </option>
+                <option value="Segundo módulo (Frontend Avançado)">
+                  Segundo Módulo
+                </option>
+                <option value="Terceiro módulo (Introdução ao Backend)">
+                  Terceiro Módulo
+                </option>
+                <option value="Quarto módulo (Backend Avançado)">
+                  Quarto Módulo
+                </option>
+              </select>
+              <p>{errors.course_module?.message}</p>
+            </InputTextAlign>
+
+            <button type="submit">Cadastrar</button>
+          </form>
+          </MainContainerContent>
+          </ContainerContentAlign>
+      </BackgroundPage>
     </>
   );
 }

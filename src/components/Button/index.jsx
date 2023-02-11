@@ -1,4 +1,4 @@
-import { LoginButton, RegisterPage } from "./style";
+import { LoginButton, RegisterPage, ButtonBack  } from "./style";
 
 export function Button({ click, type, text, styled }) {
   switch (styled) {
@@ -15,6 +15,14 @@ export function Button({ click, type, text, styled }) {
           {text}
         </RegisterPage>
       );
+
+      case "ButtonBack":
+        return (
+          <ButtonBack  onClick={click} type={type}>
+            {text}
+          </ButtonBack>
+        );
+
     default:
       return (
         <button onClick={click} type={type}>
