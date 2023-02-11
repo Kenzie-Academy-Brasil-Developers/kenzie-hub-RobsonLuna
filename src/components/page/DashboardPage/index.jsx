@@ -38,7 +38,7 @@ export function DashboardPage({ setUserData, userData }) {
 
   const formSchema = yup.object().shape({
     status: yup.string().required("Informe seu status"),
-    title: yup.string().required(),
+    title: yup.string().required("Informe uma tecnologia"),
   });
 
   const {

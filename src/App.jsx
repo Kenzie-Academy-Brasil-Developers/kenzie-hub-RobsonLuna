@@ -22,7 +22,7 @@ function App() {
    <>
    
    <Routes>
-    <Route path="/" element={<LoginPage setUserData={setUserData}/>}> </Route>
+    <Route path="/" element={<LoginPage setUserData={setUserData} />}> </Route>
     <Route path="/register" element={<RegisterPage/>}></Route>
     <Route path="/dashboard" element={<DashboardPage setUserData={setUserData} userData={userData}/>}></Route>
     

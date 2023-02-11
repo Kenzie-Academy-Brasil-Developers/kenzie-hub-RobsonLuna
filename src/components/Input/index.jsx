@@ -1,15 +1,27 @@
+import { InputDefault } from "./style";
+import { InputDisable } from "./style";
+import { InputLogin } from "./style";
+import { forwardRef } from "react";
 
 
-export function Input({click, styled, disable, placeholder, value, ...rest}, ref){
-switch (styled){
-
-    case "inputBack":
-    
+ export function Input(
+  {   placeholder, id, type, click, ...rest } , ref){
+  
     return(
-        <input onClick={click} inputStyled={styled} disable={disable} placeholder={placeholder} ref={ref} {...rest} value={value}></input>
-        )
+      <input
+      placeholder={placeholder}
+      id={id}
+      type={type}
+      {...rest}
+      ref={ref}
+      
+      />
+ 
+    )
+   
+    
 
-        default:
-    }
-
+   
 }
+
+export default forwardRef(Input)

@@ -6,11 +6,10 @@ import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import Input from "../../Input";
 
-export function LoginPage({setUserData}) {
-
-   
-     //função (objeto)
+export function LoginPage({ setUserData }) {
+  //função (objeto)
 
   const formSchema = yup.object().shape({
     email: yup
@@ -35,23 +34,27 @@ export function LoginPage({setUserData}) {
       const response = await api.post("/sessions", data);
 
       window.localStorage.clear();
-      window.localStorage.setItem("@TOKEN", JSON.stringify(response.data.token));
-      window.localStorage.setItem("@USERID", JSON.stringify(response.data.user.id));
-    //   console.log(response.data.token);
-      setUserData(response.data.user)
-      console.log(response.data.user)
-    
-      navigate("/dashboard")
-    //   toast.success("Login efetuado!")  
+      window.localStorage.setItem(
+        "@TOKEN",
+        JSON.stringify(response.data.token)
+      );
+      window.localStorage.setItem(
+        "@USERID",
+        JSON.stringify(response.data.user.id)
+      );
+      //   console.log(response.data.token);
+      setUserData(response.data.user);
+      console.log(response.data.user);
+
+      navigate("/dashboard");
+      //   toast.success("Login efetuado!")
     } catch (error) {
-     
       toast.error(error.response.data.message);
       reset();
     } finally {
       // console.log(error.)
     }
   }
-
 
   const navigate = useNavigate();
   function registerPage() {
@@ -67,12 +70,13 @@ export function LoginPage({setUserData}) {
       <form onSubmit={handleSubmit(loginForm)}>
         <InputAlign>
           <label htmlFor="email">Email</label>
-          <input
+
+          <Input
             id="email"
-            placeholder="Digite seu Email"
             type="text"
+            placeholder="Digite seu Email"
             {...register("email")}
-          ></input>
+          />
           <p>{errors.email?.message}</p>
         </InputAlign>
 
@@ -83,17 +87,15 @@ export function LoginPage({setUserData}) {
             type="text"
             placeholder="Digite sua senha"
             {...register("password")}
-          ></input>
+          />
           <p>{errors.password?.message}</p>
         </InputAlign>
 
         <button type="submit">Entrar</button>
-      
       </form>
 
       <p>Ainda não tem conta?</p>
       <button onClick={registerPage}>Cadastre-se</button>
-      
     </>
   );
 }
