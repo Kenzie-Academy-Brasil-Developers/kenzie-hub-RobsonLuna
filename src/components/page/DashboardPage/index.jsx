@@ -35,12 +35,12 @@ export function DashboardPage({ setUserData, userData }) {
     async function getUser() {
       try {
         userId = JSON.parse(userId);
-        console.log(userId);
+       
 
         const response = await api.get(`/users/${userId}`);
 
-        console.log(response.data);
-        // console.log(userData)
+        
+        
         setUserData(response.data);
       } catch (error) {}
     }
@@ -157,7 +157,7 @@ export function DashboardPage({ setUserData, userData }) {
   }
 
   function logOut() {
-    toast.success("Você foi deslogado")
+    toast.success("Você foi deslogado");
     window.localStorage.clear();
     navigate("/");
   }
@@ -191,7 +191,6 @@ export function DashboardPage({ setUserData, userData }) {
                     <Input
                       type="text"
                       placeholder="Digite a tecnologia"
-                      inputValue=""
                       {...register("title")}
                       error={errors.title?.message}
                     ></Input>
@@ -256,15 +255,7 @@ export function DashboardPage({ setUserData, userData }) {
               </EditModal>
             </>
           ) : (
-            <>    <Input
-            styled="inputHidden"
-            readOnly={true}
-            // disabled={true}
-            
-            inputValue=""
-            {...register("title")}
-           
-          />
+            <>
             
             </>
           )}
