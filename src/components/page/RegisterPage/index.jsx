@@ -7,10 +7,19 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { InputTextAlign } from "./style";
 import { Select } from "../../Select";
-import { BackgroundPage, LogoKenzie } from "../LoginPage/style";
-import { HeaderContainer, ContainerContentAlign, MainContainerContent, FormTitle, FormDescription } from "./style";
+import { LogoKenzie } from "../LoginPage/style";
+import {
+  HeaderContainer,
+  ContainerContentAlign,
+  MainContainerContent,
+  FormTitle,
+  FormDescription,
+} from "./style";
 import { Button } from "../../Button";
 import { Label } from "../../Label";
+import InputRegister from "../../InputRegister";
+import { BackgroundPage } from "./style";
+import  SelectModule  from "../../SelectModule";
 
 export function RegisterPage() {
   const navigate = useNavigate();
@@ -65,111 +74,101 @@ export function RegisterPage() {
   return (
     <>
       <BackgroundPage>
-        
-      <ContainerContentAlign>
-
-      
+        <ContainerContentAlign>
           <HeaderContainer>
             <LogoKenzie alt="Logo Kenzie Hub" src={Logo} />
-            <Button click={previousPage} text="Voltar" styled="ButtonBack"></Button>
+            <Button
+              click={previousPage}
+              text="Voltar"
+              styled="ButtonBack"
+            ></Button>
           </HeaderContainer>
 
-        <MainContainerContent>
+          <MainContainerContent>
+            <FormTitle>Crie sua conta</FormTitle>
+            <FormDescription>Rápido e grátis, vamos nessa</FormDescription>
 
+            <form onSubmit={handleSubmit(registerFormSend)}>
+              <InputTextAlign>
+                <Label htmlFor="name" text="Nome"></Label>
+                <InputRegister
+                  id="name"
+                  placeholder="Digite aqui seu nome"
+                  type="text"
+                  {...register("name")}
+                  error={errors.name?.message}
+                ></InputRegister>
+              </InputTextAlign>
 
-          <FormTitle>Crie sua conta</FormTitle>
-          <FormDescription>Rápido e grátis, vamos nessa</FormDescription>
+              <InputTextAlign>
+                <Label htmlFor="email" text="Email"></Label>
+                <InputRegister
+                  id="email"
+                  placeholder="Digite aqui seu email"
+                  type="text"
+                  {...register("email")}
+                  error={errors.email?.message}
+                ></InputRegister>
+              </InputTextAlign>
 
-          <form onSubmit={handleSubmit(registerFormSend)}>
-            <InputTextAlign>
-              <Label htmlFor="name" text="Nome"></Label>
-              <input
-                id="name"
-                placeholder="Digite aqui seu nome"
-                type="text"
-                {...register("name")}
-              ></input>
-              <p>{errors.name?.message}</p>
-            </InputTextAlign>
+              <InputTextAlign>
+                <Label htmlFor="password" text="Senha"></Label>
+                <InputRegister
+                  id="password"
+                  placeholder="Digite aqui sua senha"
+                  type="password"
+                  {...register("password")}
+                  error={errors.password?.message}
+                ></InputRegister>
+              </InputTextAlign>
 
-            <InputTextAlign>
-              <Label htmlFor="email" text="Email"></Label>
-              <input
-                id="email"
-                placeholder="Digite aqui seu email"
-                type="text"
-                {...register("email")}
-              ></input>
-              <p>{errors.email?.message}</p>
-            </InputTextAlign>
+              <InputTextAlign>
+                <Label htmlFor="confirmPassword" text="Confirmar Senha"></Label>
+                <InputRegister
+                  id="confirmPassword"
+                  placeholder="Digite aqui sua senha"
+                  type="password"
+                  {...register("confirmPassword")}
+                  error={errors.confirmPassword?.message}
+                ></InputRegister>
+              </InputTextAlign>
 
-            <InputTextAlign>
-              <Label htmlFor="password" text="Senha"></Label>
-              <input
-                id="password"
-                placeholder="Digite aqui sua senha"
-                type="password"
-                {...register("password")}
-              ></input>
-              <p>{errors.password?.message}</p>
-            </InputTextAlign>
+              <InputTextAlign>
+                <Label htmlFor="bio" text="Bio">
+                  Bio
+                </Label>
+                <InputRegister
+                  id="bio"
+                  placeholder="Fale sobre você"
+                  type="text"
+                  {...register("bio")}
+                  error={errors.bio?.message}
+                ></InputRegister>
+              </InputTextAlign>
 
-            <InputTextAlign>
-              <Label htmlFor="confirmPassword" text="Confirmar Senha"></Label>
-              <input
-                id="confirmPassword"
-                placeholder="Digite aqui sua senha"
-                type="password"
-                {...register("confirmPassword")}
-              ></input>
-              <p>{errors.confirmPassword?.message}</p>
-            </InputTextAlign>
+              <InputTextAlign>
+                <Label htmlFor="contact" text="Contato"></Label>
+                <InputRegister
+                  id="contact"
+                  placeholder="Opção de contato"
+                  type="text"
+                  {...register("contact")}
+                  error={errors.contact?.message}
+                ></InputRegister>
+              </InputTextAlign>
 
-            <InputTextAlign>
-              <Label htmlFor="bio" text="Bio">Bio</Label>
-              <input
-                id="bio"
-                placeholder="Fale sobre você"
-                type="text"
-                {...register("bio")}
-              ></input>
-              <p>{errors.bio?.message}</p>
-            </InputTextAlign>
+              <InputTextAlign>
+                <Label htmlFor="course_module" text="Módulo"></Label>
+                <SelectModule id="course_module" {...register("course_module")  }>
+        
+                </SelectModule>
+               
+              </InputTextAlign>
 
-            <InputTextAlign>
-              <Label htmlFor="contact" text="Contato"></Label>
-              <input
-                id="contact"
-                placeholder="Opção de contato"
-                type="text"
-                {...register("contact")}
-              ></input>
-              <p>{errors.contact?.message}</p>
-            </InputTextAlign>
-
-            <InputTextAlign>
-              <Label htmlFor="course_module" text="Módulo"></Label>
-              <select id="course_module" {...register("course_module")}>
-                <option value="Primeiro módulo (Introdução ao Frontend)">
-                  Primeiro Módulo
-                </option>
-                <option value="Segundo módulo (Frontend Avançado)">
-                  Segundo Módulo
-                </option>
-                <option value="Terceiro módulo (Introdução ao Backend)">
-                  Terceiro Módulo
-                </option>
-                <option value="Quarto módulo (Backend Avançado)">
-                  Quarto Módulo
-                </option>
-              </select>
-              <p>{errors.course_module?.message}</p>
-            </InputTextAlign>
-
-            <button type="submit">Cadastrar</button>
-          </form>
+              <Button type="submit" styled="ButtonRegister" text="Cadastrar"></Button>
+            </form>
           </MainContainerContent>
-          </ContainerContentAlign>
+        </ContainerContentAlign>
       </BackgroundPage>
     </>
   );

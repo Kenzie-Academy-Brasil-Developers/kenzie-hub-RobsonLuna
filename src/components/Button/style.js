@@ -48,7 +48,7 @@ color: var(--grey-0);
 `
 
 export const ButtonBack = styled.button`
-background: #212529;
+background: var(--grey-3);
 border-radius: 4px;
 height:40;
 width:67px;
@@ -65,4 +65,21 @@ text-align: center;
 /* grey-0 */
 
 color: var(--grey-0);
+`
+
+export const ButtonRegister= styled.button`
+border-radius: 4px;
+background: var(--primary-Negative);
+width:100%;
+height: 48px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: var(--title-1);
+line-height: 26px;
+border: none;
+outline:none;
+
+color: #FFFFFF;
 `
