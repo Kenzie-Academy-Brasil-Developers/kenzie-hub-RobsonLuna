@@ -1,4 +1,4 @@
-import { LoginButton, RegisterPage, ButtonBack, ButtonRegister  } from "./style";
+import { LoginButton, RegisterPage, ButtonBack, ButtonRegister, ButtonLogOut, ButtonAddTech  } from "./style";
 
 export function Button({ click, type, text, styled }) {
   switch (styled) {
@@ -29,6 +29,20 @@ export function Button({ click, type, text, styled }) {
               {text}
             </ButtonRegister>
           );
+
+          case "ButtonLogOut":
+            return (
+              <ButtonLogOut  onClick={click} type={type}>
+                {text}
+              </ButtonLogOut>
+            );
+
+            case "ButtonAddTech":
+              return (
+                <ButtonAddTech  onClick={click} type={type}>
+                  {text}
+                </ButtonAddTech>
+              );
 
     default:
       return (

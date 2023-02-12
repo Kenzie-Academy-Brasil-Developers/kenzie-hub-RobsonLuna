@@ -83,3 +83,33 @@ outline:none;
 
 color: #FFFFFF;
 `
+
+export const ButtonLogOut= styled.button`
+height:32px;
+width:55.5px;
+border:none;
+outline:none;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: var(--title2);
+line-height: 28px;
+border-radius:4px;
+
+text-align: center;
+
+background-color:var(--grey-3);
+
+color: var(--grey-0);
+`
+
+export const ButtonAddTech = styled.button`
+width:32px;
+height:32px;
+border-radius:4px;
+font-size:18px;
+border:none;
+background-color:var(--grey-3);
+font-weight:bold;
+color:var(--grey-0)
+`

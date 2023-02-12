@@ -20,3 +20,13 @@ background-color:green;
 export const CreateModal = styled(EditModal)`
 
 `
+
+export const MainDashboardContainer = styled.main`
+width:100vw;
+background-color:var(--grey-4);
+box-sizing:border-box;
+display:flex;
+flex-direction:column;
+padding:0 5vw;
+padding-bottom:20px;
+`

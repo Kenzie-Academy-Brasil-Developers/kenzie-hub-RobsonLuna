@@ -9,8 +9,11 @@ import { api } from "../../services/api";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { CreateModal } from "./style";
+import { CreateModal, MainDashboardContainer } from "./style";
 import Input from "../../Input";
+import { Header } from "../../Header";
+import { Section } from "../../Section";
+
 
 export function DashboardPage({ setUserData, userData }) {
   const [editModal, setEditModal] = useState(false);
@@ -149,19 +152,18 @@ export function DashboardPage({ setUserData, userData }) {
   return (
     <>
       {userData && (
-        <main>
-          <header>
-            <img alt="Logo Kenzie Hub" src={Logo}></img>
-            <button onClick={logOut}>Sair</button>
-          </header>
-          <SectionUser>
-            <h2>Olá,{userData.name} </h2>
+        <MainDashboardContainer>
+          <Header logOut={logOut}>
+           
+          </Header>
+          <Section userData={userData} styled="UserInfo">
+            
+          </Section>
 
-            <p>{userData.course_module}</p>
-          </SectionUser>
+           
 
-          <section>
-            <header>
+          <Section userData={userData} styled="TechList" showEditModal={showEditModal} createTechModal={createTechModal}>
+            {/* <header>
               <h2>Tecnologias</h2>
               <button onClick={createTechModal}>+</button>
             </header>
@@ -175,8 +177,8 @@ export function DashboardPage({ setUserData, userData }) {
                   </li>
                 );
               })}
-            </ul>
-          </section>
+            </ul> */}
+          </Section>
 
           {createModal ? (
             <>
@@ -240,7 +242,7 @@ export function DashboardPage({ setUserData, userData }) {
           ) : (
             <> </>
           )}
-        </main>
+        </MainDashboardContainer>
       )}
     </>
   );
