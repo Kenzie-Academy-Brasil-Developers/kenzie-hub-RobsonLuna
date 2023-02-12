@@ -1,5 +1,5 @@
 import Logo from "../../img/logoKenzieHub.svg";
-import { SectionUser } from "./style";
+import { SectionUser, SelectTitle } from "./style";
 import { v4 as uuid } from "uuid";
 import { useEffect, useState } from "react";
 import { EditModal } from "./style";
@@ -9,11 +9,18 @@ import { api } from "../../services/api";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { CreateModal, MainDashboardContainer } from "./style";
+import {
+  CreateModal,
+  MainDashboardContainer,
+  MainForm,
+  InputTitle,
+  SelectModal,
+  ButtonAlign,
+} from "./style";
 import Input from "../../Input";
 import { Header } from "../../Header";
 import { Section } from "../../Section";
-
+import { Button } from "../../Button";
 
 export function DashboardPage({ setUserData, userData }) {
   const [editModal, setEditModal] = useState(false);
@@ -54,9 +61,9 @@ export function DashboardPage({ setUserData, userData }) {
   });
 
   function showEditModal(element) {
+    SetEditTech(element);
     console.log(element);
     console.log(editTech);
-    SetEditTech(element);
     console.log(editTech);
     setEditModal(true);
   }
@@ -77,6 +84,7 @@ export function DashboardPage({ setUserData, userData }) {
 
   async function editTechRequest(data) {
     // SetEditTech(editTech)
+
     console.log("clicou");
     console.log(editTech);
     console.log(editTech.id);
@@ -94,7 +102,7 @@ export function DashboardPage({ setUserData, userData }) {
         },
       });
       updateUser();
-      toast.success("Alteração realizada com sucesso!");
+      // toast.success("Alteração realizada com sucesso!");
     } catch (error) {}
   }
 
@@ -155,47 +163,50 @@ export function DashboardPage({ setUserData, userData }) {
     <>
       {userData && (
         <MainDashboardContainer>
-          <Header styled="HeaderDashboard" logOut={logOut}>
-           
-          </Header>
-          <Section userData={userData} styled="UserInfo">
-            
-          </Section>
+          <Header styled="HeaderDashboard" logOut={logOut}></Header>
+          <Section userData={userData} styled="UserInfo"></Section>
 
-           
-
-          <Section userData={userData} styled="TechList" showEditModal={showEditModal} createTechModal={createTechModal}>
-      
-          </Section>
+          <Section
+            userData={userData}
+            styled="TechList"
+            showEditModal={showEditModal}
+            createTechModal={createTechModal}
+          ></Section>
 
           {createModal ? (
             <>
               <CreateModal>
-              {/* <Header styled="HeaderModal" click={closeCreateModal} textTitle="Cadastar tecnologia">
-                  
-                  </Header> */}
-                <header>
+                <Header
+                  styled="HeaderModal"
+                  click={closeCreateModal}
+                  textTitle="Cadastar tecnologia"
+                ></Header>
+                {/* <header>
                   <h2>Cadastrar tecnologia</h2>
                   <span onClick={closeCreateModal}>X</span>
-                </header>
-                <main>
+                </header> */}
+                <MainForm>
                   <form onSubmit={handleSubmit(createTechRequest)}>
-                    <p>Nome</p>
+                    <InputTitle>Nome</InputTitle>
                     <Input
                       type="text"
                       placeholder="Digite a tecnologia"
                       {...register("title")}
                       error={errors.title?.message}
                     ></Input>
-                    <p>Selecionar status</p>
-                    <select {...register("status")}>
+                    <SelectTitle>Selecionar status</SelectTitle>
+                    <SelectModal {...register("status")}>
                       <option value="Iniciante">Iniciante</option>
                       <option value="Intermediário">Intermediário</option>
                       <option value="Avançado">Avançado</option>
-                    </select>
-                    <button type="submit">Cadastrar tecnologia</button>
+                    </SelectModal>
+                    <Button
+                      styled="ButtonCreateTech"
+                      type="submit"
+                      text="Cadastrar tecnologia"
+                    ></Button>
                   </form>
-                </main>
+                </MainForm>
               </CreateModal>
             </>
           ) : (
@@ -204,31 +215,35 @@ export function DashboardPage({ setUserData, userData }) {
           {editModal && editTech.title ? (
             <>
               <EditModal>
-                <Header styled="HeaderModal" click={closeEditModal} textTitle="Tecnologia Detalhes">
-                  
-                </Header>
-                <main>
+                <Header
+                  styled="HeaderModal"
+                  click={closeEditModal}
+                  textTitle="Tecnologia Detalhes"
+                ></Header>
+                <MainForm>
                   <form onSubmit={handleSubmit(editTechRequest)}>
-                    <p>Nome do projeto</p>
+                    <InputTitle>Nome do projeto</InputTitle>
                     <Input
-                      // readOnly={true}
-                      disabled={true}
-                     
+                      readOnly={true}
+                      // disabled={true}
                       value={editTech.title}
+                      inputValue={editTech.title}
                       {...register("title")}
                       placeholder={editTech.title}
                     />
 
-                    <p>status</p>
-                    <select {...register("status")}>
+                    <SelectTitle>Status</SelectTitle>
+                    <SelectModal {...register("status")}>
                       <option value="Iniciante">Iniciante</option>
                       <option value="Intermediário">Intermediário</option>
                       <option value="Avançado">Avançado</option>
-                    </select>
-                    <button type="submit">Salvar Alterações</button>
+                    </SelectModal>
+                    <ButtonAlign>
+                      <Button styled="ButtonSaveTechChange" type="submit" text="Salvar Alterações"></Button>
+                      <Button styled="ButtonTechDelete " click={deleteTechRequest} text="Excluir"></Button>
+                    </ButtonAlign>
                   </form>
-                  <button onClick={deleteTechRequest}>Excluir</button>
-                </main>
+                </MainForm>
               </EditModal>
             </>
           ) : (

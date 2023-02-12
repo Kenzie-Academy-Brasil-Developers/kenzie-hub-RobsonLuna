@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const InputDefault = styled.input`
   margin-top: 15px;
-  height: 38px;
+  height: 48px;
   box-sizing: border-box;
   padding: 8.42px 2.15px 8.42px 13px;
   font-family: "Inter";
@@ -15,6 +15,7 @@ export const InputDefault = styled.input`
     border-radius:3.2px;
   color: var(--grey-0);
   outline:none;
+  width:100%;
 
   
   :hover,  :focus{

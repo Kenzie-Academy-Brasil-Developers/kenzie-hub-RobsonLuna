@@ -76,7 +76,7 @@ flex-direction:column;
 background-color:var(--grey-3);
 margin-top:21px;
 padding:23px;
-max-width:416px;
+max-width:462px;
 margin:21px auto 0px;
 box-sizing: border-box;
 gap: 16px;

@@ -47,13 +47,20 @@ font-style: normal;
 font-weight: 700;
 font-size: 14px;
 line-height: 24px;
-/* identical to box height, or 171% */
 
-
-/* grey-0 */
-
-color: #F8F9FA;
+color: var(--grey-0);
 `
+export const Close = styled.span`
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 26px;
+
+
+color: var(--grey-1);
+`
+
 
 
 
