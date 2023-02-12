@@ -102,8 +102,9 @@ export function DashboardPage({ setUserData, userData }) {
         },
       });
       updateUser();
-      // toast.success("Alteração realizada com sucesso!");
+      toast.success("Alteração realizada com sucesso!");
     } catch (error) {}
+    // toast.warning("Essa Tecnologia já pertence a esse status")
   }
 
   async function deleteTechRequest() {
@@ -149,12 +150,14 @@ export function DashboardPage({ setUserData, userData }) {
       });
       toast.success("Item Adicionado com sucesso!");
       updateUser();
+      closeCreateModal();
     } catch (error) {
       toast.error(error.response.data.message);
     }
   }
 
   function logOut() {
+    toast.success("Você foi deslogado")
     window.localStorage.clear();
     navigate("/");
   }
@@ -181,16 +184,14 @@ export function DashboardPage({ setUserData, userData }) {
                   click={closeCreateModal}
                   textTitle="Cadastar tecnologia"
                 ></Header>
-                {/* <header>
-                  <h2>Cadastrar tecnologia</h2>
-                  <span onClick={closeCreateModal}>X</span>
-                </header> */}
+
                 <MainForm>
                   <form onSubmit={handleSubmit(createTechRequest)}>
                     <InputTitle>Nome</InputTitle>
                     <Input
                       type="text"
                       placeholder="Digite a tecnologia"
+                      inputValue=""
                       {...register("title")}
                       error={errors.title?.message}
                     ></Input>
@@ -239,15 +240,33 @@ export function DashboardPage({ setUserData, userData }) {
                       <option value="Avançado">Avançado</option>
                     </SelectModal>
                     <ButtonAlign>
-                      <Button styled="ButtonSaveTechChange" type="submit" text="Salvar Alterações"></Button>
-                      <Button styled="ButtonTechDelete " click={deleteTechRequest} text="Excluir"></Button>
+                      <Button
+                        styled="ButtonSaveTechChange"
+                        type="submit"
+                        text="Salvar Alterações"
+                      ></Button>
+                      <Button
+                        styled="ButtonTechDelete "
+                        click={deleteTechRequest}
+                        text="Excluir"
+                      ></Button>
                     </ButtonAlign>
                   </form>
                 </MainForm>
               </EditModal>
             </>
           ) : (
-            <> </>
+            <>    <Input
+            styled="inputHidden"
+            readOnly={true}
+            // disabled={true}
+            
+            inputValue=""
+            {...register("title")}
+           
+          />
+            
+            </>
           )}
         </MainDashboardContainer>
       )}

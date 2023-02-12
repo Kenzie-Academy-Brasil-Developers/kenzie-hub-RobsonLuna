@@ -80,7 +80,7 @@ max-width:462px;
 margin:21px auto 0px;
 box-sizing: border-box;
 gap: 16px;
-background-color: var(--grey-2);
+
 `
 
 export const Border = styled.div`
@@ -96,6 +96,10 @@ justify-content:space-between;
 padding:13px 22px;
 background-color:var(--grey-4);   
 box-sizing:border-box; 
+
+:hover, :focus{
+    background-color:var(--grey-2);  
+}
 ` 
 
 export const TechName = styled.p`

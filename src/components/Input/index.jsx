@@ -2,7 +2,7 @@ import { InputDefault } from "./style";
 import { InputDisable } from "./style";
 import { InputLogin } from "./style";
 import { forwardRef } from "react";
-import { ErrorMessage } from "./style";
+import { ErrorMessage, InputHidden } from "./style";
 
 export function Input({ placeholder, id, type, click, error, styled, inputValue, disabled, ...rest }, ref) {
 
@@ -47,6 +47,28 @@ export function Input({ placeholder, id, type, click, error, styled, inputValue,
         </div>
       </>
         );
+
+ case "inputHidden":
+      
+      
+      return (
+        <>
+        <div>
+
+      
+        <InputHidden
+          placeholder={placeholder}
+          id={id}
+          type={type}
+          value={inputValue}
+          disabled={disabled}
+          {...rest}
+          ref={ref}
+        />
+        {error ? <ErrorMessage>{error}</ErrorMessage> : null}
+        </div>
+      </>)
+
         default:
           return (
             <>
@@ -59,6 +81,8 @@ export function Input({ placeholder, id, type, click, error, styled, inputValue,
         />
         {error ? <ErrorMessage>{error}</ErrorMessage> : null}
       </>
+
+      
           )
       }
       }

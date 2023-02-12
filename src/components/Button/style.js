@@ -3,11 +3,15 @@ import styled from "styled-components";
 export const LoginButton = styled.button`
   /* color-primary */
 
-  background: #ff577f;
+  background: var(--primary);
   /* color-primary */
 
-  border: 1.2182px solid #ff577f;
+  border: 1.2182px solid var(--primary);
   border-radius: 4px;
+
+  :hover, :focus{
+    background: var(--primary-Focus)
+  }  
 
   font-family: "Inter";
   font-style: normal;
@@ -67,6 +71,10 @@ export const ButtonRegister = styled.button`
   width: 100%;
   height: 48px;
 
+  :hover, :focus{
+    background: var(--primary-Focus)
+  }  
+
   font-family: "Inter";
   font-style: normal;
   font-weight: 500;
@@ -95,6 +103,10 @@ export const ButtonLogOut = styled.button`
   background-color: var(--grey-3);
 
   color: var(--grey-0);
+
+  :hover,:focus{
+    background-color: var(--grey-2);
+  }
 `;
 
 export const ButtonAddTech = styled.button`
@@ -106,6 +118,10 @@ export const ButtonAddTech = styled.button`
   background-color: var(--grey-3);
   font-weight: bold;
   color: var(--grey-0);
+
+  :hover, :focus{
+    background-color: var(--grey-2);
+  }
 `;
 
 export const ButtonCreateTech = styled.button`
@@ -122,6 +138,10 @@ export const ButtonCreateTech = styled.button`
   border: none;
   outline: none;
 
+  :hover, :focus{
+    background: var(--primary-Focus)
+  }  
+
   color: #ffffff;
 `;
 
@@ -133,6 +153,10 @@ export const ButtonSaveTechChange = styled.button`
   border: none;
   outline: none;
   background-color: var(--primary-Negative);
+
+  :hover, :focus{
+    background: var(--primary-Focus)
+  }  
 
   font-family: "Inter";
   font-style: normal;
@@ -157,5 +181,7 @@ line-height: 26px;
 
 
 color: #FFFFFF;
+border:none;
+outline:none;
 
 `

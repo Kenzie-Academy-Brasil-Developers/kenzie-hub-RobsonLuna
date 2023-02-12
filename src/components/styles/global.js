@@ -34,7 +34,7 @@ body {
 ol, ul {
 	list-style: none;
 }
-button{
+button,span{
     cursor: pointer;
 }
 

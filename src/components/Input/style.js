@@ -47,3 +47,7 @@ font-family: "Inter";
   line-height: 21px;
 
 `
+
+export const InputHidden = styled.input`
+display:none;
+`
