@@ -1,4 +1,4 @@
-import { SectionUserInfo, SectionUserName, SectionUserDescription, SectionTechList, TechHeaderItemAlign, TechTitle, TechList } from "./style";
+import { SectionUserInfo, SectionUserName, SectionUserDescription, SectionTechList, TechHeaderItemAlign,TechStatus, TechTitle, TechList, Border,TechName, ListItem } from "./style";
 import {v4 as uuid} from "uuid"
 import { Button } from "../Button";
 
@@ -7,7 +7,7 @@ export function Section({ styled, userData, showEditModal,createTechModal }) {
     case "UserInfo":
       return (
         <SectionUserInfo>
-          <SectionUserName>Olá,{userData.name} </SectionUserName>
+          <SectionUserName>Olá, {userData.name} </SectionUserName>
 
             <SectionUserDescription>{userData.course_module}</SectionUserDescription>
         </SectionUserInfo>
@@ -15,6 +15,9 @@ export function Section({ styled, userData, showEditModal,createTechModal }) {
 
       case "TechList":
         return (
+            <>
+           
+            <Border></Border>
             <SectionTechList>
             <TechHeaderItemAlign>
               <TechTitle>Tecnologias</TechTitle>
@@ -24,14 +27,16 @@ export function Section({ styled, userData, showEditModal,createTechModal }) {
             <TechList>
               {userData.techs.map((element) => {
                 return (
-                  <li key={uuid()} onClick={() => showEditModal(element)}>
-                    <p>{element.title}</p>
-                    <p>{element.status}</p>
-                  </li>
+                  <ListItem key={uuid()} onClick={() => showEditModal(element)}>
+                    <TechName>{element.title}</TechName>
+                    <TechStatus>{element.status}</TechStatus>
+                  </ListItem>
                 );
               })}
             </TechList>
           </SectionTechList>
+          
+          </>
         );
 
 

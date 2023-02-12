@@ -54,10 +54,11 @@ export function DashboardPage({ setUserData, userData }) {
   });
 
   function showEditModal(element) {
-    // console.log(element);
-    setEditModal(true);
+    console.log(element);
+    console.log(editTech);
     SetEditTech(element);
     console.log(editTech);
+    setEditModal(true);
   }
 
   async function updateUser() {
@@ -75,6 +76,7 @@ export function DashboardPage({ setUserData, userData }) {
   }
 
   async function editTechRequest(data) {
+    // SetEditTech(editTech)
     console.log("clicou");
     console.log(editTech);
     console.log(editTech.id);
@@ -153,7 +155,7 @@ export function DashboardPage({ setUserData, userData }) {
     <>
       {userData && (
         <MainDashboardContainer>
-          <Header logOut={logOut}>
+          <Header styled="HeaderDashboard" logOut={logOut}>
            
           </Header>
           <Section userData={userData} styled="UserInfo">
@@ -163,26 +165,15 @@ export function DashboardPage({ setUserData, userData }) {
            
 
           <Section userData={userData} styled="TechList" showEditModal={showEditModal} createTechModal={createTechModal}>
-            {/* <header>
-              <h2>Tecnologias</h2>
-              <button onClick={createTechModal}>+</button>
-            </header>
-
-            <ul>
-              {userData.techs.map((element) => {
-                return (
-                  <li key={uuid()} onClick={() => showEditModal(element)}>
-                    <p>{element.title}</p>
-                    <p>{element.status}</p>
-                  </li>
-                );
-              })}
-            </ul> */}
+      
           </Section>
 
           {createModal ? (
             <>
               <CreateModal>
+              {/* <Header styled="HeaderModal" click={closeCreateModal} textTitle="Cadastar tecnologia">
+                  
+                  </Header> */}
                 <header>
                   <h2>Cadastrar tecnologia</h2>
                   <span onClick={closeCreateModal}>X</span>
@@ -210,19 +201,20 @@ export function DashboardPage({ setUserData, userData }) {
           ) : (
             <> </>
           )}
-          {editModal ? (
+          {editModal && editTech.title ? (
             <>
               <EditModal>
-                <header>
-                  <h2>Tecnologia Detalhes</h2>
-                  <span onClick={closeEditModal}>X</span>
-                </header>
+                <Header styled="HeaderModal" click={closeEditModal} textTitle="Tecnologia Detalhes">
+                  
+                </Header>
                 <main>
                   <form onSubmit={handleSubmit(editTechRequest)}>
                     <p>Nome do projeto</p>
                     <Input
-                      inputValue={editTech.title}
+                      // readOnly={true}
                       disabled={true}
+                     
+                      value={editTech.title}
                       {...register("title")}
                       placeholder={editTech.title}
                     />
