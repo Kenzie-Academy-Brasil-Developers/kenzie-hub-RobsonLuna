@@ -62,9 +62,7 @@ export function DashboardPage({ setUserData, userData }) {
 
   function showEditModal(element) {
     SetEditTech(element);
-    console.log(element);
-    console.log(editTech);
-    console.log(editTech);
+  
     setEditModal(true);
   }
 
@@ -72,12 +70,11 @@ export function DashboardPage({ setUserData, userData }) {
     let userId = window.localStorage.getItem("@USERID");
     userId = JSON.parse(userId);
     try {
-      console.log(userId);
+      
 
       const response = await api.get(`/users/${userId}`);
 
-      console.log(response.data);
-      // console.log(userData)
+      
       setUserData(response.data);
     } catch (error) {}
   }
@@ -85,14 +82,10 @@ export function DashboardPage({ setUserData, userData }) {
   async function editTechRequest(data) {
     // SetEditTech(editTech)
 
-    console.log("clicou");
-    console.log(editTech);
-    console.log(editTech.id);
-    console.log(data);
+   
     let token = window.localStorage.getItem("@TOKEN");
     token = JSON.parse(token);
-    console.log(data);
-    console.log(token);
+    
 
     try {
       const response = await api.put(`/users/techs/${editTech.id}`, data, {
@@ -108,7 +101,7 @@ export function DashboardPage({ setUserData, userData }) {
   }
 
   async function deleteTechRequest() {
-    // console.log(editTech);
+    
     let token = window.localStorage.getItem("@TOKEN");
     token = JSON.parse(token);
     try {
@@ -137,7 +130,7 @@ export function DashboardPage({ setUserData, userData }) {
   }
 
   async function createTechRequest(data) {
-    console.log(data);
+    
     let token = window.localStorage.getItem("@TOKEN");
     token = JSON.parse(token);
 

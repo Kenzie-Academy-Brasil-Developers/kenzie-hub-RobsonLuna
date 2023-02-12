@@ -55,7 +55,7 @@ export function RegisterPage() {
   });
 
   async function registerFormSend(data) {
-    console.log(data);
+  
 
     try {
       const response = await api.post("/users", data);

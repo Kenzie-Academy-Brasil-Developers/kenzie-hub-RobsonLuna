@@ -50,7 +50,7 @@ color: var(--grey-1);
 `
 
 export const BackgroundPage = styled.div`
-width:100vw;
+width:100%;
 
 
 background-color:var(--grey-4);

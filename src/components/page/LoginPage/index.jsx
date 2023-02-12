@@ -35,7 +35,7 @@ export function LoginPage({ setUserData }) {
   });
 
   async function loginForm(data) {
-    console.log(data);
+    
     try {
       const response = await api.post("/sessions", data);
 
@@ -48,9 +48,9 @@ export function LoginPage({ setUserData }) {
         "@USERID",
         JSON.stringify(response.data.user.id)
       );
-      //   console.log(response.data.token);
+      //   
       setUserData(response.data.user);
-      console.log(response.data.user);
+      
 
       navigate("/dashboard");
       //   toast.success("Login efetuado!")
