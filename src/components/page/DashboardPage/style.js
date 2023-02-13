@@ -37,6 +37,7 @@ export const MainDashboardContainer = styled.main`
   display: flex;
   flex-direction: column;
   padding-bottom: 20px;
+  min-height:100vh;
 `;
 
 export const MainForm = styled.main`
@@ -45,6 +46,7 @@ export const MainForm = styled.main`
   box-sizing: border-box;
   width: 90%;
   max-width: 369px;
+
 `;
 
 export const InputTitle = styled.p`

@@ -14,10 +14,14 @@ export function Input(
     styled,
     inputValue,
     disabled,
+    register,
     ...rest
   },
   ref
-) {
+) 
+
+{
+  // console.log(inputValue)
   switch (styled) {
     case "inputDisable":
       return (
@@ -76,9 +80,12 @@ export function Input(
         <>
           <InputDefault
             placeholder={placeholder}
+            // disabled={true}
             id={id}
             type={type}
             {...rest}
+            value={inputValue}
+            // {...register}
             ref={ref}
           />
           {error ? <ErrorMessage>{error}</ErrorMessage> : null}

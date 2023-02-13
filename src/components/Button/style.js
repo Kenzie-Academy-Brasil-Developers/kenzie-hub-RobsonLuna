@@ -29,6 +29,8 @@ export const LoginButton = styled.button`
   margin-top: 17.65px;
 `;
 
+
+
 export const RegisterPage = styled.button`
   width: 100%;
   height: 48px;
@@ -36,13 +38,11 @@ export const RegisterPage = styled.button`
   background-color: var(--grey-1);
   border: none;
   border-radius: 4px;
-
   font-family: "Inter";
   font-style: normal;
   font-weight: 500;
   font-size: var(--title1);
   line-height: 26px;
-
   color: var(--grey-0);
 `;
 

@@ -46,7 +46,8 @@ export function DashboardPage({ setUserData, userData }) {
 
   const formSchema = yup.object().shape({
     status: yup.string().required("Informe seu status"),
-    title: yup.string().required("Informe uma tecnologia"),
+    title: yup.string(),
+    // .required("Informe uma tecnologia")
   });
 
   const {
@@ -59,7 +60,7 @@ export function DashboardPage({ setUserData, userData }) {
 
   function showEditModal(element) {
     SetEditTech(element);
-
+ console.log(element)
     setEditModal(true);
   }
 
@@ -74,8 +75,8 @@ export function DashboardPage({ setUserData, userData }) {
   }
 
   async function editTechRequest(data) {
-   
-
+   console.log(data)
+  
     let token = window.localStorage.getItem("@TOKEN");
     token = JSON.parse(token);
 
@@ -86,6 +87,7 @@ export function DashboardPage({ setUserData, userData }) {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log(response)
       updateUser();
       toast.success("Alteração realizada com sucesso!");
     } catch (error) {}
@@ -207,11 +209,12 @@ export function DashboardPage({ setUserData, userData }) {
                   <form onSubmit={handleSubmit(editTechRequest)}>
                     <InputTitle>Nome do projeto</InputTitle>
                     <Input
-                      readOnly={true}
-                      // disabled={true}
-                      value={editTech.title}
+                      // readOnly={true}
+                      disabled={true}
+                      // value={editTech.title}
                       inputValue={editTech.title}
-                      {...register("title")}
+                      register=  {register("title")}
+                     
                       placeholder={editTech.title}
                     />
 
