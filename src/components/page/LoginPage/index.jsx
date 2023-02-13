@@ -8,14 +8,14 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Input from "../../Input";
 import { Form, FormLogin } from "../../FormLogin";
-import { BackgroundPage,LogoKenzie, RegisterTitle } from "./style";
+import { BackgroundPage, LogoKenzie, RegisterTitle } from "./style";
 import { Label } from "../../Label";
 import { Button } from "../../Button";
 import { MainContainer } from "./style";
 import { FormTitle } from "./style";
 
 export function LoginPage({ setUserData }) {
-  //função (objeto)
+ 
 
   const formSchema = yup.object().shape({
     email: yup
@@ -35,7 +35,6 @@ export function LoginPage({ setUserData }) {
   });
 
   async function loginForm(data) {
-    
     try {
       const response = await api.post("/sessions", data);
 
@@ -48,12 +47,11 @@ export function LoginPage({ setUserData }) {
         "@USERID",
         JSON.stringify(response.data.user.id)
       );
-      //   
+      //
       setUserData(response.data.user);
-      
 
       navigate("/dashboard");
-      //   toast.success("Login efetuado!")
+      
     } catch (error) {
       toast.error(error.response.data.message);
       reset();
@@ -62,14 +60,14 @@ export function LoginPage({ setUserData }) {
 
   const navigate = useNavigate();
   function registerPage() {
-    // toast("Crie sua conta");
+    
     navigate("/register");
   }
   return (
     <>
       <BackgroundPage>
         <LogoKenzie alt="Logo Kenzie Hub" src={Logo} />
-        <MainContainer> 
+        <MainContainer>
           <FormTitle>Login</FormTitle>
 
           <form styled="formLoginPage" onSubmit={handleSubmit(loginForm)}>
@@ -96,11 +94,17 @@ export function LoginPage({ setUserData }) {
               />
             </InputAlign>
 
-            <Button type="submit" text="Entrar" styled="Login">Entrar</Button>
+            <Button type="submit" text="Entrar" styled="Login">
+              Entrar
+            </Button>
           </form>
 
-          <RegisterTitle >Ainda não tem conta?</RegisterTitle>
-          <Button click={registerPage}  text="Cadastre-se" styled="RegisterPage" ></Button>
+          <RegisterTitle>Ainda não tem conta?</RegisterTitle>
+          <Button
+            click={registerPage}
+            text="Cadastre-se"
+            styled="RegisterPage"
+          ></Button>
         </MainContainer>
       </BackgroundPage>
     </>

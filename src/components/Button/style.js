@@ -9,9 +9,10 @@ export const LoginButton = styled.button`
   border: 1.2182px solid var(--primary);
   border-radius: 4px;
 
-  :hover, :focus{
-    background: var(--primary-Focus)
-  }  
+  :hover,
+  :focus {
+    background: var(--primary-Focus);
+  }
 
   font-family: "Inter";
   font-style: normal;
@@ -71,9 +72,10 @@ export const ButtonRegister = styled.button`
   width: 100%;
   height: 48px;
 
-  :hover, :focus{
-    background: var(--primary-Focus)
-  }  
+  :hover,
+  :focus {
+    background: var(--primary-Focus);
+  }
 
   font-family: "Inter";
   font-style: normal;
@@ -104,7 +106,8 @@ export const ButtonLogOut = styled.button`
 
   color: var(--grey-0);
 
-  :hover,:focus{
+  :hover,
+  :focus {
     background-color: var(--grey-2);
   }
 `;
@@ -119,7 +122,8 @@ export const ButtonAddTech = styled.button`
   font-weight: bold;
   color: var(--grey-0);
 
-  :hover, :focus{
+  :hover,
+  :focus {
     background-color: var(--grey-2);
   }
 `;
@@ -138,9 +142,10 @@ export const ButtonCreateTech = styled.button`
   border: none;
   outline: none;
 
-  :hover, :focus{
-    background: var(--primary-Focus)
-  }  
+  :hover,
+  :focus {
+    background: var(--primary-Focus);
+  }
 
   color: #ffffff;
 `;
@@ -154,34 +159,32 @@ export const ButtonSaveTechChange = styled.button`
   outline: none;
   background-color: var(--primary-Negative);
 
-  :hover, :focus{
-    background: var(--primary-Focus)
-  }  
+  :hover,
+  :focus {
+    background: var(--primary-Focus);
+  }
 
   font-family: "Inter";
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 26px;
-  
 
   color: #ffffff;
 `;
 
-export const ButtonTechDelete = styled.button `
-height:48px;
-width:40vw;
-max-width:98px;
-border-radius:4px;
-font-family: 'Inter';
-font-style: normal;
-font-weight: 500;
-font-size: var(--title1);
-line-height: 26px;
+export const ButtonTechDelete = styled.button`
+  height: 48px;
+  width: 40vw;
+  max-width: 98px;
+  border-radius: 4px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: var(--title1);
+  line-height: 26px;
 
-
-color: #FFFFFF;
-border:none;
-outline:none;
-
-`
+  color: #ffffff;
+  border: none;
+  outline: none;
+`;

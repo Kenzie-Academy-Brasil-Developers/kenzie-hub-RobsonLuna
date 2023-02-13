@@ -11,15 +11,16 @@ export const SelectModule = styled.select`
   font-size: 13.0293px;
   line-height: 21px;
   background-color: var(--grey-2);
-  border:none;
-    border-radius:3.2px;
+  border: none;
+  border-radius: 3.2px;
   color: var(--grey-0);
-  outline:none;
- margin-bottom:20px;
-  
-  :hover,  :focus{
-    outline:solid 1px var(--grey-0);
-    box-sizing:border-box;
+  outline: none;
+  margin-bottom: 20px;
+
+  :hover,
+  :focus {
+    outline: solid 1px var(--grey-0);
+    box-sizing: border-box;
   }
 
   ::placeholder {

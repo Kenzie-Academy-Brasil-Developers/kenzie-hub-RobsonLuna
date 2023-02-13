@@ -11,16 +11,16 @@ export const InputDefault = styled.input`
   font-size: 13.0293px;
   line-height: 21px;
   background-color: var(--grey-2);
-  border:none;
-    border-radius:3.2px;
+  border: none;
+  border-radius: 3.2px;
   color: var(--grey-0);
-  outline:none;
-  width:100%;
+  outline: none;
+  width: 100%;
 
-  
-  :hover,  :focus{
-    outline:solid 1px var(--grey-0);
-    box-sizing:border-box;
+  :hover,
+  :focus {
+    outline: solid 1px var(--grey-0);
+    box-sizing: border-box;
   }
 
   ::placeholder {
@@ -38,16 +38,15 @@ export const InputDisable = styled.input``;
 export const InputLogin = styled.input``;
 
 export const ErrorMessage = styled.p`
-margin-top:5px;
-color:var(--primary);
-font-family: "Inter";
+  margin-top: 5px;
+  color: var(--primary);
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 13.0293px;
   line-height: 21px;
-
-`
+`;
 
 export const InputHidden = styled.input`
-display:none;
-`
+  display: none;
+`;

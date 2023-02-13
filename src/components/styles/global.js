@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -67,4 +67,4 @@ font-family: 'Inter', sans-serif;
 	--title1:16px;
 	--title2:12px;
 }
-`
+`;

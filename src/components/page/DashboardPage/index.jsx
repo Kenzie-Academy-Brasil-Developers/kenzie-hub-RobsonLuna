@@ -35,12 +35,9 @@ export function DashboardPage({ setUserData, userData }) {
     async function getUser() {
       try {
         userId = JSON.parse(userId);
-       
 
         const response = await api.get(`/users/${userId}`);
 
-        
-        
         setUserData(response.data);
       } catch (error) {}
     }
@@ -62,7 +59,7 @@ export function DashboardPage({ setUserData, userData }) {
 
   function showEditModal(element) {
     SetEditTech(element);
-  
+
     setEditModal(true);
   }
 
@@ -70,22 +67,17 @@ export function DashboardPage({ setUserData, userData }) {
     let userId = window.localStorage.getItem("@USERID");
     userId = JSON.parse(userId);
     try {
-      
-
       const response = await api.get(`/users/${userId}`);
 
-      
       setUserData(response.data);
     } catch (error) {}
   }
 
   async function editTechRequest(data) {
-    // SetEditTech(editTech)
-
    
+
     let token = window.localStorage.getItem("@TOKEN");
     token = JSON.parse(token);
-    
 
     try {
       const response = await api.put(`/users/techs/${editTech.id}`, data, {
@@ -97,11 +89,10 @@ export function DashboardPage({ setUserData, userData }) {
       updateUser();
       toast.success("Alteração realizada com sucesso!");
     } catch (error) {}
-    // toast.warning("Essa Tecnologia já pertence a esse status")
+    
   }
 
   async function deleteTechRequest() {
-    
     let token = window.localStorage.getItem("@TOKEN");
     token = JSON.parse(token);
     try {
@@ -130,7 +121,6 @@ export function DashboardPage({ setUserData, userData }) {
   }
 
   async function createTechRequest(data) {
-    
     let token = window.localStorage.getItem("@TOKEN");
     token = JSON.parse(token);
 
@@ -248,9 +238,7 @@ export function DashboardPage({ setUserData, userData }) {
               </EditModal>
             </>
           ) : (
-            <>
-            
-            </>
+            <></>
           )}
         </MainDashboardContainer>
       )}

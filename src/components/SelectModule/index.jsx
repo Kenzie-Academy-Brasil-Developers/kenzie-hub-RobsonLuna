@@ -16,7 +16,7 @@ export function SelectRegister({ styled, id, error, ...rest }, ref) {
         </option>
         <option value="Quarto módulo (Backend Avançado)">Quarto Módulo</option>
       </SelectModule>
-      {error ? <p>{error}</p>: null}
+      {error ? <p>{error}</p> : null}
     </>
   );
 }

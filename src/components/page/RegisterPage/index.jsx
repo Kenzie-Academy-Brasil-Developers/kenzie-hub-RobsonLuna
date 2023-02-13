@@ -19,7 +19,7 @@ import { Button } from "../../Button";
 import { Label } from "../../Label";
 import InputRegister from "../../InputRegister";
 import { BackgroundPage } from "./style";
-import  SelectModule  from "../../SelectModule";
+import SelectModule from "../../SelectModule";
 
 export function RegisterPage() {
   const navigate = useNavigate();
@@ -55,8 +55,6 @@ export function RegisterPage() {
   });
 
   async function registerFormSend(data) {
-  
-
     try {
       const response = await api.post("/users", data);
 
@@ -159,13 +157,17 @@ export function RegisterPage() {
 
               <InputTextAlign>
                 <Label htmlFor="course_module" text="Módulo"></Label>
-                <SelectModule id="course_module" {...register("course_module")  }>
-        
-                </SelectModule>
-               
+                <SelectModule
+                  id="course_module"
+                  {...register("course_module")}
+                ></SelectModule>
               </InputTextAlign>
 
-              <Button type="submit" styled="ButtonRegister" text="Cadastrar"></Button>
+              <Button
+                type="submit"
+                styled="ButtonRegister"
+                text="Cadastrar"
+              ></Button>
             </form>
           </MainContainerContent>
         </ContainerContentAlign>
