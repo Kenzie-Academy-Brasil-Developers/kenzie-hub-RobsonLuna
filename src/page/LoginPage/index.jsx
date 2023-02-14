@@ -1,4 +1,4 @@
-import Logo from "../../img/logoKenzieHub.svg";
+import Logo from "../../components/img/logoKenzieHub.svg";
 import { InputAlign } from "./style";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -6,11 +6,11 @@ import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import Input from "../../Input";
-import { Form, FormLogin } from "../../FormLogin";
+import Input from "../../components/Input";
+// import { Form, FormLogin } from "../../components/FormLogin";
 import { BackgroundPage, LogoKenzie, RegisterTitle } from "./style";
-import { Label } from "../../Label";
-import { Button } from "../../Button";
+import { Label } from "../../components/Label";
+import { Button } from "../../components/Button";
 import { MainContainer } from "./style";
 import { FormTitle } from "./style";
 

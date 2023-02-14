@@ -1,4 +1,4 @@
-import Logo from "../../img/logoKenzieHub.svg";
+
 import { SectionUser, SelectTitle } from "./style";
 import { v4 as uuid } from "uuid";
 import { useEffect, useState } from "react";
@@ -17,10 +17,10 @@ import {
   SelectModal,
   ButtonAlign,
 } from "./style";
-import Input from "../../Input";
-import { Header } from "../../Header";
-import { Section } from "../../Section";
-import { Button } from "../../Button";
+import {Input} from "../../components/Input"
+import { Header } from "../../components/Header";
+import { Section } from "../../components/Section";
+import { Button } from "../../components/Button";
 
 export function DashboardPage({ setUserData, userData }) {
   const [editModal, setEditModal] = useState(false);

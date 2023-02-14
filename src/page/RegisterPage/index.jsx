@@ -1,4 +1,4 @@
-import Logo from "../../img/logoKenzieHub.svg";
+import Logo from "../../components/img/logoKenzieHub.svg";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -6,7 +6,7 @@ import { api } from "../../services/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { InputTextAlign } from "./style";
-import { Select } from "../../Select";
+import { Select } from "../../components/Select";
 import { LogoKenzie } from "../LoginPage/style";
 import {
   HeaderContainer,
@@ -15,11 +15,11 @@ import {
   FormTitle,
   FormDescription,
 } from "./style";
-import { Button } from "../../Button";
-import { Label } from "../../Label";
-import InputRegister from "../../InputRegister";
+import { Button } from "../../components/Button";
+import { Label } from "../../components/Label";
+import InputRegister from "../../components/InputRegister";
 import { BackgroundPage } from "./style";
-import SelectModule from "../../SelectModule";
+import SelectModule from "../../components/SelectModule";
 
 export function RegisterPage() {
   const navigate = useNavigate();
