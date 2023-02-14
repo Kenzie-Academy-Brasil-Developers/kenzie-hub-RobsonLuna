@@ -7,25 +7,15 @@ import {LoginPage } from "./page/LoginPage"
 import { DashboardPage } from "./page/DashboardPage";
 import { RegisterPage } from "./page/RegisterPage";
 import { useEffect, useState } from "react";
+import { AppRoutes } from "./routes";
 
 function App() {
   const [userData, setUserData] = useState(null);
 
   return (
     <>
-      <Routes>
-        <Route path="/" element={<LoginPage setUserData={setUserData} />}>
-          {" "}
-        </Route>
-        <Route path="/register" element={<RegisterPage />}></Route>
-        <Route
-          path="/dashboard"
-          element={
-            <DashboardPage setUserData={setUserData} userData={userData} />
-          }
-        ></Route>
-      </Routes>
-      <ToastContainer />
+    <AppRoutes setUserData={setUserData} userData={userData} />
+      <ToastContainer  />
     </>
   );
 }
