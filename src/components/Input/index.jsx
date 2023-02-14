@@ -2,7 +2,7 @@ import { InputDefault } from "./style";
 import { InputDisable } from "./style";
 import { InputLogin } from "./style";
 import { forwardRef } from "react";
-import { ErrorMessage, InputHidden } from "./style";
+import { ErrorMessage, InputHidden, InputCreateTech } from "./style";
 
 export function Input(
   {
@@ -75,21 +75,40 @@ export function Input(
         </>
       );
 
+      case "inputCreateTech":
+        return (
+          <>
+            
+              <InputCreateTech
+               placeholder={placeholder}
+               id={id}
+               type={type}
+               value={inputValue}
+               disabled={disabled}
+               {...rest}
+               ref={ref}
+               />
+               {error ? <ErrorMessage>{error}</ErrorMessage> : null}
+            
+          </>
+        );
+
+
     default:
       return (
         <>
           <InputDefault
-            placeholder={placeholder}
-            // disabled={true}
-            id={id}
-            type={type}
-            {...rest}
-            value={inputValue}
-            // {...register}
-            ref={ref}
+          placeholder={placeholder}
+          id={id}
+          type={type}
+          value={inputValue}
+          disabled={disabled}
+          {...rest}
+          ref={ref}
           />
           {error ? <ErrorMessage>{error}</ErrorMessage> : null}
         </>
+       
       );
   }
 }

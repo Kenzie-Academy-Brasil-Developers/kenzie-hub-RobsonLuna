@@ -1,4 +1,3 @@
-
 import { SectionUser, SelectTitle } from "./style";
 import { v4 as uuid } from "uuid";
 import { useEffect, useState } from "react";
@@ -17,7 +16,7 @@ import {
   SelectModal,
   ButtonAlign,
 } from "./style";
-import {Input} from "../../components/Input"
+import Input from "../../components/Input";
 import { Header } from "../../components/Header";
 import { Section } from "../../components/Section";
 import { Button } from "../../components/Button";
@@ -60,7 +59,7 @@ export function DashboardPage({ setUserData, userData }) {
 
   function showEditModal(element) {
     SetEditTech(element);
- console.log(element)
+    console.log(element);
     setEditModal(true);
   }
 
@@ -75,8 +74,8 @@ export function DashboardPage({ setUserData, userData }) {
   }
 
   async function editTechRequest(data) {
-   console.log(data)
-  
+    console.log(data);
+
     let token = window.localStorage.getItem("@TOKEN");
     token = JSON.parse(token);
 
@@ -87,11 +86,10 @@ export function DashboardPage({ setUserData, userData }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response)
+      console.log(response);
       updateUser();
       toast.success("Alteração realizada com sucesso!");
     } catch (error) {}
-    
   }
 
   async function deleteTechRequest() {
@@ -174,11 +172,12 @@ export function DashboardPage({ setUserData, userData }) {
                   <form onSubmit={handleSubmit(createTechRequest)}>
                     <InputTitle>Nome</InputTitle>
                     <Input
+                      styled="inputCreateTech"
                       type="text"
                       placeholder="Digite a tecnologia"
                       {...register("title")}
                       error={errors.title?.message}
-                    ></Input>
+                    />
                     <SelectTitle>Selecionar status</SelectTitle>
                     <SelectModal {...register("status")}>
                       <option value="Iniciante">Iniciante</option>
@@ -213,8 +212,8 @@ export function DashboardPage({ setUserData, userData }) {
                       disabled={true}
                       // value={editTech.title}
                       inputValue={editTech.title}
-                      register=  {register("title")}
-                     
+                      // register=  {register("title")}
+                      {...register("title")}
                       placeholder={editTech.title}
                     />
 
