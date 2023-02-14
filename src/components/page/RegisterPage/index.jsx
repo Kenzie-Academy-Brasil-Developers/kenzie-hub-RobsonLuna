@@ -35,7 +35,8 @@ export function RegisterPage() {
       .required("Informe sua senha")
       .matches(/.{8,}/, "a senha deve conter pelo menos 8 caracteres")
       .matches(/.[a-z]|[A-Z]/, "A senha deve conter ao menos uma letra")
-      .matches(/(\W|_)/, "A senha deve conter ao menos um caracter especial"),
+      .matches(/(\W|_)/, "A senha deve conter ao menos um caracter especial")
+      .matches(/(\d)/, "A senha deve conter ao menos um número"),
     confirmPassword: yup
       .string()
       .required("Confirme sua senha")
