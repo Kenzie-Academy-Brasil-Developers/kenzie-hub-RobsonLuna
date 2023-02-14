@@ -21,7 +21,7 @@ export function Input(
 ) 
 
 {
-  // console.log(inputValue)
+ 
   switch (styled) {
     case "inputDisable":
       return (

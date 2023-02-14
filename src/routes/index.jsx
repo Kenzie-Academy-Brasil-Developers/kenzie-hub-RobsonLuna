@@ -1,13 +1,13 @@
-import React from 'react'
+import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { LoginPage } from '../page/LoginPage';
-import { DashboardPage } from '../page/DashboardPage';
-import { RegisterPage } from '../page/RegisterPage';
+import { LoginPage } from "../page/LoginPage";
+import { DashboardPage } from "../page/DashboardPage";
+import { RegisterPage } from "../page/RegisterPage";
 
- export function AppRoutes({setUserData, userData }){
-    return(
-        <>
-        <Routes>
+export function AppRoutes({ setUserData, userData }) {
+  return (
+    <>
+      <Routes>
         <Route path="/" element={<LoginPage setUserData={setUserData} />}>
           {" "}
         </Route>
@@ -15,10 +15,10 @@ import { RegisterPage } from '../page/RegisterPage';
         <Route
           path="/dashboard"
           element={
-              <DashboardPage setUserData={setUserData} userData={userData} />
-            }
-            ></Route>
+            <DashboardPage setUserData={setUserData} userData={userData} />
+          }
+        ></Route>
       </Routes>
-            </>
-    )
- }
+    </>
+  );
+}

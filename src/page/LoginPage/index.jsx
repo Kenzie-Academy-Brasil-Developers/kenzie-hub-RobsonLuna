@@ -7,7 +7,6 @@ import { api } from "../../services/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Input from "../../components/Input";
-// import { Form, FormLogin } from "../../components/FormLogin";
 import { BackgroundPage, LogoKenzie, RegisterTitle } from "./style";
 import { Label } from "../../components/Label";
 import { Button } from "../../components/Button";
@@ -15,8 +14,6 @@ import { MainContainer } from "./style";
 import { FormTitle } from "./style";
 
 export function LoginPage({ setUserData }) {
- 
-
   const formSchema = yup.object().shape({
     email: yup
       .string()
@@ -51,7 +48,6 @@ export function LoginPage({ setUserData }) {
       setUserData(response.data.user);
 
       navigate("/dashboard");
-      
     } catch (error) {
       toast.error(error.response.data.message);
       reset();
@@ -60,7 +56,6 @@ export function LoginPage({ setUserData }) {
 
   const navigate = useNavigate();
   function registerPage() {
-    
     navigate("/register");
   }
   return (

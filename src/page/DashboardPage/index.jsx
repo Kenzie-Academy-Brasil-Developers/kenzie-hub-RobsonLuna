@@ -23,8 +23,12 @@ import { Button } from "../../components/Button";
 
 export function DashboardPage({ setUserData, userData }) {
   const [editModal, setEditModal] = useState(false);
-  const [editTech, SetEditTech] = useState();
+  const [editTech, setEditTech] = useState();
   const [createModal, setCreateModal] = useState(false);
+
+  useEffect(() => {
+    console.log("Mudou");
+  }, [editTech]);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -46,7 +50,6 @@ export function DashboardPage({ setUserData, userData }) {
   const formSchema = yup.object().shape({
     status: yup.string().required("Informe seu status"),
     title: yup.string(),
-    // .required("Informe uma tecnologia")
   });
 
   const {
@@ -58,7 +61,7 @@ export function DashboardPage({ setUserData, userData }) {
   });
 
   function showEditModal(element) {
-    SetEditTech(element);
+    setEditTech(element);
     console.log(element);
     setEditModal(true);
   }
