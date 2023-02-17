@@ -5,7 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { GlobalStyle } from "./styles/global";
 import { UserProvider } from "./providers/UserContext";
-import { SchemaLoginProvider } from "./providers/SchemaLoginContext";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

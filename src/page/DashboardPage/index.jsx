@@ -22,36 +22,9 @@ import { Section } from "../../components/Section";
 import { Button } from "../../components/Button";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
+import { TechContext } from "../../providers/TechContext";
 
 export function DashboardPage() {
-
-  const {userData, setUserData} = useContext(UserContext)
-
-  const [editModal, setEditModal] = useState(false);
-  const [editTech, setEditTech] = useState();
-  const [createModal, setCreateModal] = useState(false);
-
-  useEffect(() => {
-    console.log("Mudou");
-  }, [editTech]);
-
-  const navigate = useNavigate();
-  useEffect(() => {
-    let userId = window.localStorage.getItem("@USERID");
-    !userId && navigate("/");
-
-    async function getUser() {
-      try {
-        userId = JSON.parse(userId);
-
-        const response = await api.get(`/users/${userId}`);
-
-        setUserData(response.data);
-      } catch (error) {}
-    }
-    getUser();
-  }, []);
-
   const formSchema = yup.object().shape({
     status: yup.string().required("Informe seu status"),
     title: yup.string(),
@@ -65,93 +38,135 @@ export function DashboardPage() {
     resolver: yupResolver(formSchema),
   });
 
-  function showEditModal(element) {
-    setEditTech(element);
-    console.log(element);
-    setEditModal(true);
-  }
+  const { userData, setUserData } = useContext(UserContext);
+  const {
+    editModal,
+    setEditModal,
+    editTech,
+    setEditTech,
+    createModal,
+    setCreateModal,
+    showEditModal,
+    logOut,
+    createTechRequest,
+    createTechModal,
+    deleteTechRequest,
+    editTechRequest,
+    closeEditModal,
+    closeCreateModal
+  } = useContext(TechContext);
+  //  const [editModal, setEditModal] = useState(false);
+  //  const [editTech, setEditTech] = useState()
+  //  const [createModal, setCreateModal] = useState(false)
 
-  async function updateUser() {
-    let userId = window.localStorage.getItem("@USERID");
-    userId = JSON.parse(userId);
-    try {
-      const response = await api.get(`/users/${userId}`);
+  // useEffect(() => {
+  //   console.log("Mudou");
+  // }, [editTech]);
 
-      setUserData(response.data);
-    } catch (error) {}
-  }
+  // const navigate = useNavigate();
+  // useEffect(() => {
+  //   let userId = window.localStorage.getItem("@USERID");
+  //   !userId && navigate("/");
 
-  async function editTechRequest(data) {
-    console.log(data);
+  //   async function getUser() {
+  //     try {
+  //       userId = JSON.parse(userId);
 
-    let token = window.localStorage.getItem("@TOKEN");
-    token = JSON.parse(token);
+  //       const response = await api.get(`/users/${userId}`);
 
-    try {
-      const response = await api.put(`/users/techs/${editTech.id}`, data, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      console.log(response);
-      updateUser();
-      toast.success("Alteração realizada com sucesso!");
-    } catch (error) {}
-  }
+  //       setUserData(response.data);
+  //     } catch (error) {}
+  //   }
+  //   getUser();
+  // }, []);
 
-  async function deleteTechRequest() {
-    let token = window.localStorage.getItem("@TOKEN");
-    token = JSON.parse(token);
-    try {
-      const response = await api.delete(`/users/techs/${editTech.id}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      toast.success("Item deletado com sucesso!");
-      updateUser();
-      closeEditModal();
-    } catch (error) {}
-  }
+  // function showEditModal(element) {
+  //   setEditTech(element);
+  //   console.log(element);
+  //   setEditModal(true);
+  // }
 
-  function createTechModal(data) {
-    setCreateModal(true);
-  }
+  // async function updateUser() {
+  //   let userId = window.localStorage.getItem("@USERID");
+  //   userId = JSON.parse(userId);
+  //   try {
+  //     const response = await api.get(`/users/${userId}`);
 
-  function closeEditModal() {
-    setEditModal(false);
-  }
+  //     setUserData(response.data);
+  //   } catch (error) {}
+  // }
 
-  function closeCreateModal() {
-    setCreateModal(false);
-  }
+  // async function editTechRequest(data) {
+  //   console.log(data);
 
-  async function createTechRequest(data) {
-    let token = window.localStorage.getItem("@TOKEN");
-    token = JSON.parse(token);
+  //   let token = window.localStorage.getItem("@TOKEN");
+  //   token = JSON.parse(token);
 
-    try {
-      const response = await api.post("/users/techs", data, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      toast.success("Item Adicionado com sucesso!");
-      updateUser();
-      closeCreateModal();
-    } catch (error) {
-      toast.error(error.response.data.message);
-    }
-  }
+  //   try {
+  //     const response = await api.put(`/users/techs/${editTech.id}`, data, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
+  //     console.log(response);
+  //     updateUser();
+  //     toast.success("Alteração realizada com sucesso!");
+  //   } catch (error) {}
+  // }
 
-  function logOut() {
-    toast.success("Você foi deslogado");
-    window.localStorage.clear();
-    navigate("/");
-  }
+  // async function deleteTechRequest() {
+  //   let token = window.localStorage.getItem("@TOKEN");
+  //   token = JSON.parse(token);
+  //   try {
+  //     const response = await api.delete(`/users/techs/${editTech.id}`, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
+  //     toast.success("Item deletado com sucesso!");
+  //     updateUser();
+  //     closeEditModal();
+  //   } catch (error) {}
+  // }
+
+  // function createTechModal(data) {
+  //   setCreateModal(true);
+  // }
+
+  // function closeEditModal() {
+  //   setEditModal(false);
+  // }
+
+  // function closeCreateModal() {
+  //   setCreateModal(false);
+  // }
+
+  // async function createTechRequest(data) {
+  //   let token = window.localStorage.getItem("@TOKEN");
+  //   token = JSON.parse(token);
+
+  //   try {
+  //     const response = await api.post("/users/techs", data, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
+  //     toast.success("Item Adicionado com sucesso!");
+  //     updateUser();
+  //     closeCreateModal();
+  //   } catch (error) {
+  //     toast.error(error.response.data.message);
+  //   }
+  // }
+
+  // function logOut() {
+  //   toast.success("Você foi deslogado");
+  //   window.localStorage.clear();
+  //   navigate("/");
+  // }
 
   return (
     <>
