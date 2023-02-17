@@ -7,8 +7,11 @@ import { GlobalStyle } from "./styles/global";
 import { UserProvider } from "./providers/UserContext";
 
 
+
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+  
   <React.StrictMode>
     <GlobalStyle></GlobalStyle>
     <BrowserRouter>
@@ -17,7 +20,7 @@ root.render(
     <UserProvider>
 
 
-      <App />
+      <App  />
 
     </UserProvider>
     </BrowserRouter>

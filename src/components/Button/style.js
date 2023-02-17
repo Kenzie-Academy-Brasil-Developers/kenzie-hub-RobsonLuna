@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const LoginButton = styled.button`
-  /* color-primary */
+ 
 
   background: var(--primary);
-  /* color-primary */
+
 
   border: 1.2182px solid var(--primary);
   border-radius: 4px;
@@ -57,11 +57,11 @@ export const ButtonBack = styled.button`
   font-weight: 600;
   font-size: 12px;
   line-height: 28px;
-  /* identical to box height, or 237% */
+  
 
   text-align: center;
 
-  /* grey-0 */
+ 
 
   color: var(--grey-0);
 `;

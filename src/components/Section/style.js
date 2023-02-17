@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const SectionUserInfo = styled.section`
   display: flex;
-  /* justify-content:space-between; */
   justify-content: center;
   flex-direction: column;
   align-items: flex-start;
