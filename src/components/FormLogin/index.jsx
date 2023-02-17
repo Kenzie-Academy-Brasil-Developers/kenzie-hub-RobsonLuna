@@ -5,8 +5,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Label } from "../Label";
 import { Button } from "../Button";
+import { UserContext } from "../../providers/UserContext";
+import { useContext } from "react";
 
-export function FormLogin({ loginForm }) {
+
+export function FormLogin() {
+
+  const { userData, setUserData, loginForm, registerPage } =
+  useContext(UserContext);
+
   const formSchema = yup.object().shape({
     email: yup
       .string()
