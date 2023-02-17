@@ -4,20 +4,22 @@ import { LoginPage } from "../page/LoginPage";
 import { DashboardPage } from "../page/DashboardPage";
 import { RegisterPage } from "../page/RegisterPage";
 
-export function AppRoutes({ setUserData, userData }) {
+
+export function AppRoutes() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<LoginPage setUserData={setUserData} />}>
-          {" "}
-        </Route>
-        <Route path="/register" element={<RegisterPage />}></Route>
         <Route
-          path="/dashboard"
+          path="/"
           element={
-            <DashboardPage setUserData={setUserData} userData={userData} />
+            
+              
+              <LoginPage />
+            
           }
         ></Route>
+        <Route path="/register" element={<RegisterPage />}></Route>
+        <Route path="/dashboard" element={<DashboardPage />}></Route>
       </Routes>
     </>
   );

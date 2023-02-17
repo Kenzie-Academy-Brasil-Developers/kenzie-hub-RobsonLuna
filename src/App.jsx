@@ -10,11 +10,11 @@ import { useEffect, useState } from "react";
 import { AppRoutes } from "./routes";
 
 function App() {
-  const [userData, setUserData] = useState(null);
+  ;
 
   return (
     <>
-      <AppRoutes setUserData={setUserData} userData={userData} />
+      <AppRoutes  />
       <ToastContainer />
     </>
   );

@@ -12,8 +12,16 @@ import { Label } from "../../components/Label";
 import { Button } from "../../components/Button";
 import { MainContainer } from "./style";
 import { FormTitle } from "./style";
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserContext";
 
-export function LoginPage({ setUserData }) {
+
+export function LoginPage() {
+  
+  const {userData,setUserData } = useContext(UserContext)
+
+
+
   const formSchema = yup.object().shape({
     email: yup
       .string()

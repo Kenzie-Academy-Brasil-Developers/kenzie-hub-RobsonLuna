@@ -4,13 +4,22 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { GlobalStyle } from "./styles/global";
+import { UserProvider } from "./providers/UserContext";
+import { SchemaLoginProvider } from "./providers/SchemaLoginContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <GlobalStyle></GlobalStyle>
     <BrowserRouter>
+
+
+    <UserProvider>
+{/* <SchemaLoginProvider> */}
+
       <App />
+{/* </SchemaLoginProvider> */}
+    </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

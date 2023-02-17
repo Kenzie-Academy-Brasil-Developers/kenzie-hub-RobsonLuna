@@ -20,8 +20,13 @@ import Input from "../../components/Input";
 import { Header } from "../../components/Header";
 import { Section } from "../../components/Section";
 import { Button } from "../../components/Button";
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserContext";
 
-export function DashboardPage({ setUserData, userData }) {
+export function DashboardPage() {
+
+  const {userData, setUserData} = useContext(UserContext)
+
   const [editModal, setEditModal] = useState(false);
   const [editTech, setEditTech] = useState();
   const [createModal, setCreateModal] = useState(false);
