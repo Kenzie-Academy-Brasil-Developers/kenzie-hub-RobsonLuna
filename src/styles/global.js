@@ -58,7 +58,7 @@ font-family: 'Inter', sans-serif;
 :root{
 	--primary:#FF577F;
 	--primary-Focus:#FF427F;
-	--primary-Negative:#59323F;
+	--primary-Negative:#59323F; 
 	--grey-4:#121214;
 	--grey-3:#212529;
 	--grey-2:#343B41;

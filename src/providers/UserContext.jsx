@@ -3,11 +3,31 @@ import { api } from "../services/api";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export const UserContext = createContext({});
 
 export function UserProvider({ children }) {
   const [userData, setUserData] = useState(null);
+
+  let checkToken = window.localStorage.getItem("@TOKEN");
+
+  useEffect(() => {
+    let userId = window.localStorage.getItem("@USERID");
+    userId && navigate("/dashboard");
+
+    async function getUser() {
+      try {
+        userId = JSON.parse(userId);
+
+        const response = await api.get(`/users/${userId}`);
+
+        setUserData(response.data);
+      } catch (error) {}
+    }
+    getUser();
+  }, []);
+  
 
   async function loginForm(data) {
     try {
@@ -28,9 +48,6 @@ export function UserProvider({ children }) {
       navigate("/dashboard");
     } catch (error) {
       toast.error(error.response.data.message);
-      // reset();
-      
-       
     }
 
   }
@@ -66,7 +83,8 @@ export function UserProvider({ children }) {
         registerPage,
         registerFormSend,
         previousPage,
-       
+        navigate,
+        checkToken,
       }}
     >
       {children}

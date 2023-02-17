@@ -18,7 +18,7 @@ export function LoginPage() {
         <LogoKenzie alt="Logo Kenzie Hub" src={Logo} />
         <MainContainer>
           <FormTitle>Login</FormTitle>
-          <FormLogin ></FormLogin>
+          <FormLogin></FormLogin>
 
           <RegisterTitle>Ainda não tem conta?</RegisterTitle>
           <Button
