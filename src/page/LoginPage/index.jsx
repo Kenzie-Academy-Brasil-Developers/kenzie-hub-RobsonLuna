@@ -14,11 +14,13 @@ import { MainContainer } from "./style";
 import { FormTitle } from "./style";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
+import { SchemaLoginContext } from "../../providers/SchemaLoginContext";
 
 
 export function LoginPage() {
   
   const {userData,setUserData } = useContext(UserContext)
+  // const {navigate, register,handleSubmit, loginForm } = useContext(SchemaLoginContext)
 
 
 
@@ -72,7 +74,6 @@ export function LoginPage() {
         <LogoKenzie alt="Logo Kenzie Hub" src={Logo} />
         <MainContainer>
           <FormTitle>Login</FormTitle>
-
           <form styled="formLoginPage" onSubmit={handleSubmit(loginForm)}>
             <InputAlign>
               <Label htmlFor="email" text="Email"></Label>

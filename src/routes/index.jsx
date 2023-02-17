@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { LoginPage } from "../page/LoginPage";
 import { DashboardPage } from "../page/DashboardPage";
 import { RegisterPage } from "../page/RegisterPage";
-
+import { SchemaLoginProvider } from "../providers/SchemaLoginContext";
 
 export function AppRoutes() {
   return (
@@ -13,8 +13,10 @@ export function AppRoutes() {
           path="/"
           element={
             
-              
+            <SchemaLoginProvider>
+
               <LoginPage />
+            </SchemaLoginProvider>
             
           }
         ></Route>
