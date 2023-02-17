@@ -1,10 +1,12 @@
 import Input from "../Input";
-import { InputAlign } from "../page/LoginPage/style";
+import { InputAlign } from "../../page/LoginPage/style";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import { Label } from "../Label";
+import { Button } from "../Button";
 
-export function FormLogin({ styled, onSubmit }) {
+export function FormLogin({ loginForm }) {
   const formSchema = yup.object().shape({
     email: yup
       .string()
@@ -22,37 +24,37 @@ export function FormLogin({ styled, onSubmit }) {
     resolver: yupResolver(formSchema),
   });
 
-  switch (styled) {
-    case "formLoginPage":
-      return (
-        <form onSubmit={onSubmit}>
-          <InputAlign>
-            <label htmlFor="email">Email</label>
+  return(
 
-            <Input
-              id="email"
-              type="text"
-              placeholder="Digite seu Email"
-              {...register("email")}
-              error={errors.email?.message}
-            />
-          </InputAlign>
+ 
 
-          <InputAlign>
-            <label htmlFor="password">Senha</label>
-            <Input
-              id="password"
-              type="text"
-              placeholder="Digite sua senha"
-              {...register("password")}
-              error={errors.password?.message}
-            />
-          </InputAlign>
+<form styled="formLoginPage" onSubmit={handleSubmit(loginForm)}>
+            <InputAlign>
+              <Label htmlFor="email" text="Email"></Label>
 
-          <button type="submit">Entrar</button>
-        </form>
-      );
+              <Input
+                id="email"
+                type="text"
+                placeholder="Digite seu Email"
+                {...register("email")}
+                error={errors.email?.message}
+              />
+            </InputAlign>
 
-    default:
-  }
+            <InputAlign>
+              <Label htmlFor="password" text="Senha"></Label>
+              <Input
+                id="password"
+                type="password"
+                placeholder="Digite sua senha"
+                {...register("password")}
+                error={errors.password?.message}
+              />
+            </InputAlign>
+
+            <Button type="submit" text="Entrar" styled="Login">
+              Entrar
+            </Button>
+          </form>
+           )
 }

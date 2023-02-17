@@ -15,6 +15,7 @@ import { FormTitle } from "./style";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
 import { SchemaLoginContext } from "../../providers/SchemaLoginContext";
+import { FormLogin } from "../../components/FormLogin";
 
 
 export function LoginPage() {
@@ -24,22 +25,22 @@ export function LoginPage() {
 
 
 
-  const formSchema = yup.object().shape({
-    email: yup
-      .string()
-      .required("Informe um email")
-      .email("Digite um formato de email válido"),
-    password: yup.string().required("Informe sua senha"),
-  });
+  // const formSchema = yup.object().shape({
+  //   email: yup
+  //     .string()
+  //     .required("Informe um email")
+  //     .email("Digite um formato de email válido"),
+  //   password: yup.string().required("Informe sua senha"),
+  // });
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(formSchema),
-  });
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   reset,
+  //   formState: { errors },
+  // } = useForm({
+  //   resolver: yupResolver(formSchema),
+  // });
 
   async function loginForm(data) {
     try {
@@ -60,7 +61,7 @@ export function LoginPage() {
       navigate("/dashboard");
     } catch (error) {
       toast.error(error.response.data.message);
-      reset();
+      // reset();
     }
   }
 
@@ -73,8 +74,11 @@ export function LoginPage() {
       <BackgroundPage>
         <LogoKenzie alt="Logo Kenzie Hub" src={Logo} />
         <MainContainer>
-          <FormTitle>Login</FormTitle>
-          <form styled="formLoginPage" onSubmit={handleSubmit(loginForm)}>
+          <FormTitle >Login</FormTitle>
+          <FormLogin  loginForm={loginForm}>
+
+          </FormLogin>
+          {/* <form styled="formLoginPage" onSubmit={handleSubmit(loginForm)}>
             <InputAlign>
               <Label htmlFor="email" text="Email"></Label>
 
@@ -101,7 +105,7 @@ export function LoginPage() {
             <Button type="submit" text="Entrar" styled="Login">
               Entrar
             </Button>
-          </form>
+          </form> */}
 
           <RegisterTitle>Ainda não tem conta?</RegisterTitle>
           <Button
