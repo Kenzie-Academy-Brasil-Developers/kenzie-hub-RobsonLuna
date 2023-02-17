@@ -140,7 +140,7 @@ export function TechProvider({ children }) {
         deleteTechRequest,
         editTechRequest,
         closeEditModal,
-        closeCreateModal
+        closeCreateModal,
       }}
     >
       {children}

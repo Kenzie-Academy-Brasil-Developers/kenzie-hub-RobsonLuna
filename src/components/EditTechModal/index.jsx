@@ -14,16 +14,12 @@ import { ButtonAlign } from "../../page/DashboardPage/style";
 import { Button } from "../Button";
 
 export function EditTechModal() {
-  const {
-    editTech,
-    deleteTechRequest,
-    editTechRequest,
-    closeEditModal,
-  } = useContext(TechContext);
+  const { editTech, deleteTechRequest, editTechRequest, closeEditModal } =
+    useContext(TechContext);
 
   const formSchema = yup.object().shape({
     status: yup.string().required("Informe seu status"),
-    title: yup.string()
+    title: yup.string(),
   });
 
   const {
@@ -46,7 +42,6 @@ export function EditTechModal() {
           <form onSubmit={handleSubmit(editTechRequest)}>
             <InputTitle>Nome do projeto</InputTitle>
             <Input
-              
               disabled={true}
               inputValue={editTech.title}
               {...register("title")}

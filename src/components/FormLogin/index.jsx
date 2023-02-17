@@ -24,37 +24,34 @@ export function FormLogin({ loginForm }) {
     resolver: yupResolver(formSchema),
   });
 
-  return(
+  return (
+    <form styled="formLoginPage" onSubmit={handleSubmit(loginForm)}>
+      <InputAlign>
+        <Label htmlFor="email" text="Email"></Label>
 
- 
+        <Input
+          id="email"
+          type="text"
+          placeholder="Digite seu Email"
+          {...register("email")}
+          error={errors.email?.message}
+        />
+      </InputAlign>
 
-<form styled="formLoginPage" onSubmit={handleSubmit(loginForm)}>
-            <InputAlign>
-              <Label htmlFor="email" text="Email"></Label>
+      <InputAlign>
+        <Label htmlFor="password" text="Senha"></Label>
+        <Input
+          id="password"
+          type="password"
+          placeholder="Digite sua senha"
+          {...register("password")}
+          error={errors.password?.message}
+        />
+      </InputAlign>
 
-              <Input
-                id="email"
-                type="text"
-                placeholder="Digite seu Email"
-                {...register("email")}
-                error={errors.email?.message}
-              />
-            </InputAlign>
-
-            <InputAlign>
-              <Label htmlFor="password" text="Senha"></Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="Digite sua senha"
-                {...register("password")}
-                error={errors.password?.message}
-              />
-            </InputAlign>
-
-            <Button type="submit" text="Entrar" styled="Login">
-              Entrar
-            </Button>
-          </form>
-           )
+      <Button type="submit" text="Entrar" styled="Login">
+        Entrar
+      </Button>
+    </form>
+  );
 }

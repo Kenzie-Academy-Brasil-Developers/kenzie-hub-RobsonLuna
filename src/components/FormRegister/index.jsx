@@ -9,7 +9,6 @@ import SelectModule from "../SelectModule";
 import { Button } from "../Button";
 
 export function FormRegister({ registerFormSend }) {
-
   const formSchema = yup.object().shape({
     name: yup.string().required("Digite seu nome"),
     email: yup
