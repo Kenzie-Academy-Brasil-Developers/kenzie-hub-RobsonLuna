@@ -20,55 +20,8 @@ import { FormLogin } from "../../components/FormLogin";
 
 export function LoginPage() {
   
-  const {userData,setUserData } = useContext(UserContext)
-  // const {navigate, register,handleSubmit, loginForm } = useContext(SchemaLoginContext)
+  const {userData, setUserData, loginForm, registerPage} = useContext(UserContext)
 
-
-
-  // const formSchema = yup.object().shape({
-  //   email: yup
-  //     .string()
-  //     .required("Informe um email")
-  //     .email("Digite um formato de email válido"),
-  //   password: yup.string().required("Informe sua senha"),
-  // });
-
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   reset,
-  //   formState: { errors },
-  // } = useForm({
-  //   resolver: yupResolver(formSchema),
-  // });
-
-  async function loginForm(data) {
-    try {
-      const response = await api.post("/sessions", data);
-
-      window.localStorage.clear();
-      window.localStorage.setItem(
-        "@TOKEN",
-        JSON.stringify(response.data.token)
-      );
-      window.localStorage.setItem(
-        "@USERID",
-        JSON.stringify(response.data.user.id)
-      );
-      //
-      setUserData(response.data.user);
-
-      navigate("/dashboard");
-    } catch (error) {
-      toast.error(error.response.data.message);
-      // reset();
-    }
-  }
-
-  const navigate = useNavigate();
-  function registerPage() {
-    navigate("/register");
-  }
   return (
     <>
       <BackgroundPage>
@@ -78,34 +31,6 @@ export function LoginPage() {
           <FormLogin  loginForm={loginForm}>
 
           </FormLogin>
-          {/* <form styled="formLoginPage" onSubmit={handleSubmit(loginForm)}>
-            <InputAlign>
-              <Label htmlFor="email" text="Email"></Label>
-
-              <Input
-                id="email"
-                type="text"
-                placeholder="Digite seu Email"
-                {...register("email")}
-                error={errors.email?.message}
-              />
-            </InputAlign>
-
-            <InputAlign>
-              <Label htmlFor="password" text="Senha"></Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="Digite sua senha"
-                {...register("password")}
-                error={errors.password?.message}
-              />
-            </InputAlign>
-
-            <Button type="submit" text="Entrar" styled="Login">
-              Entrar
-            </Button>
-          </form> */}
 
           <RegisterTitle>Ainda não tem conta?</RegisterTitle>
           <Button
