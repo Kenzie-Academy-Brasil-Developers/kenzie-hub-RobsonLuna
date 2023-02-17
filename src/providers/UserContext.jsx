@@ -38,9 +38,25 @@ export function UserProvider({children}){
         navigate("/register");
       }
 
+
+      async function registerFormSend(data) {
+        try {
+          const response = await api.post("/users", data);
+    
+          navigate("/");
+          toast.success("Conta criada com sucesso!");
+        } catch (error) {
+          toast.error(error.response.data.message);
+        }
+      }
+    
+      function previousPage() {
+        navigate(-1);
+      }
+
     
     return (
-        <UserContext.Provider value={{userData, setUserData, loginForm, registerPage}}>
+        <UserContext.Provider value={{userData, setUserData, loginForm, registerPage, registerFormSend, previousPage}}>
             {children}
              </UserContext.Provider>
     )
