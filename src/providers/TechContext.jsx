@@ -17,10 +17,6 @@ export function TechProvider({ children }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("Mudou");
-  }, [editTech]);
-
-  useEffect(() => {
     let userId = window.localStorage.getItem("@USERID");
     !userId && navigate("/");
 
@@ -38,7 +34,7 @@ export function TechProvider({ children }) {
 
   function showEditModal(element) {
     setEditTech(element);
-    console.log(element);
+
     setEditModal(true);
   }
 
@@ -53,8 +49,6 @@ export function TechProvider({ children }) {
   }
 
   async function editTechRequest(data) {
-    console.log(data);
-
     let token = window.localStorage.getItem("@TOKEN");
     token = JSON.parse(token);
 
@@ -65,7 +59,7 @@ export function TechProvider({ children }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response);
+
       updateUser();
       toast.success("Alteração realizada com sucesso!");
     } catch (error) {}
