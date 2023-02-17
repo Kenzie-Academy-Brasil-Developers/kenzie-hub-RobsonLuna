@@ -29,8 +29,13 @@ export function UserProvider({ children }) {
     } catch (error) {
       toast.error(error.response.data.message);
       // reset();
+      
+       
     }
+
   }
+
+
 
   const navigate = useNavigate();
   function registerPage() {
@@ -61,6 +66,7 @@ export function UserProvider({ children }) {
         registerPage,
         registerFormSend,
         previousPage,
+       
       }}
     >
       {children}

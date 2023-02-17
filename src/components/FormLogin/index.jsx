@@ -31,8 +31,13 @@ export function FormLogin() {
     resolver: yupResolver(formSchema),
   });
 
+  function onSubmit(data){
+    loginForm(data)
+    reset()
+  }
+
   return (
-    <form styled="formLoginPage" onSubmit={handleSubmit(loginForm)}>
+    <form styled="formLoginPage" onSubmit={handleSubmit(onSubmit)}>
       <InputAlign>
         <Label htmlFor="email" text="Email"></Label>
 
