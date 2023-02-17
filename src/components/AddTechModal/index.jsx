@@ -23,7 +23,7 @@ export function AddTechModal(){
 
       const formSchema = yup.object().shape({
         status: yup.string().required("Informe seu status"),
-        title: yup.string(),
+        title: yup.string().required("Informe uma Tecnologia"),
       });
     
       const {

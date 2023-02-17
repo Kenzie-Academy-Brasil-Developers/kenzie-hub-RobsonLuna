@@ -19,6 +19,7 @@ import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
 import { TechContext } from "../../providers/TechContext";
 import { AddTechModal } from "../../components/AddTechModal";
+import { EditTechModal } from "../../components/EditTechModal";
 
 
 export function DashboardPage() {
@@ -74,48 +75,7 @@ export function DashboardPage() {
             <> </>
           )}
           {editModal && editTech.title ? (
-            <>
-              <EditModal>
-                <Header
-                  styled="HeaderModal"
-                  click={closeEditModal}
-                  textTitle="Tecnologia Detalhes"
-                ></Header>
-                <MainForm>
-                  <form onSubmit={handleSubmit(editTechRequest)}>
-                    <InputTitle>Nome do projeto</InputTitle>
-                    <Input
-                      // readOnly={true}
-                      disabled={true}
-                      // value={editTech.title}
-                      inputValue={editTech.title}
-                      // register=  {register("title")}
-                      {...register("title")}
-                      placeholder={editTech.title}
-                    />
-
-                    <SelectTitle>Status</SelectTitle>
-                    <SelectModal {...register("status")}>
-                      <option value="Iniciante">Iniciante</option>
-                      <option value="Intermediário">Intermediário</option>
-                      <option value="Avançado">Avançado</option>
-                    </SelectModal>
-                    <ButtonAlign>
-                      <Button
-                        styled="ButtonSaveTechChange"
-                        type="submit"
-                        text="Salvar Alterações"
-                      ></Button>
-                      <Button
-                        styled="ButtonTechDelete "
-                        click={deleteTechRequest}
-                        text="Excluir"
-                      ></Button>
-                    </ButtonAlign>
-                  </form>
-                </MainForm>
-              </EditModal>
-            </>
+            <EditTechModal></EditTechModal>
           ) : (
             <></>
           )}
