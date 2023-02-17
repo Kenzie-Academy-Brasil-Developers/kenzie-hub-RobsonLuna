@@ -1,10 +1,5 @@
-import { SectionUser, SelectTitle } from "./style";
-import { v4 as uuid } from "uuid";
-import { useEffect, useState } from "react";
+import { SelectTitle } from "./style";
 import { EditModal } from "./style";
-import { Navigate, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { api } from "../../services/api";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -23,6 +18,8 @@ import { Button } from "../../components/Button";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
 import { TechContext } from "../../providers/TechContext";
+import { AddTechModal } from "../../components/AddTechModal";
+
 
 export function DashboardPage() {
   const formSchema = yup.object().shape({
@@ -53,9 +50,9 @@ export function DashboardPage() {
     deleteTechRequest,
     editTechRequest,
     closeEditModal,
-    closeCreateModal
+    closeCreateModal,
   } = useContext(TechContext);
-  
+
   return (
     <>
       {userData && (
@@ -71,39 +68,8 @@ export function DashboardPage() {
           ></Section>
 
           {createModal ? (
-            <>
-              <CreateModal>
-                <Header
-                  styled="HeaderModal"
-                  click={closeCreateModal}
-                  textTitle="Cadastar tecnologia"
-                ></Header>
-
-                <MainForm>
-                  <form onSubmit={handleSubmit(createTechRequest)}>
-                    <InputTitle>Nome</InputTitle>
-                    <Input
-                      styled="inputCreateTech"
-                      type="text"
-                      placeholder="Digite a tecnologia"
-                      {...register("title")}
-                      error={errors.title?.message}
-                    />
-                    <SelectTitle>Selecionar status</SelectTitle>
-                    <SelectModal {...register("status")}>
-                      <option value="Iniciante">Iniciante</option>
-                      <option value="Intermediário">Intermediário</option>
-                      <option value="Avançado">Avançado</option>
-                    </SelectModal>
-                    <Button
-                      styled="ButtonCreateTech"
-                      type="submit"
-                      text="Cadastrar tecnologia"
-                    ></Button>
-                  </form>
-                </MainForm>
-              </CreateModal>
-            </>
+            <AddTechModal></AddTechModal>
+        
           ) : (
             <> </>
           )}

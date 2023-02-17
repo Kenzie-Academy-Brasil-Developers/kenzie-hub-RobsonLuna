@@ -5,22 +5,21 @@ import { DashboardPage } from "../page/DashboardPage";
 import { RegisterPage } from "../page/RegisterPage";
 import { TechProvider } from "../providers/TechContext";
 
-
 export function AppRoutes() {
   return (
     <>
       <Routes>
+        <Route path="/" element={<LoginPage />}></Route>
+        <Route path="/register" element={<RegisterPage />}></Route>
         <Route
-          path="/"
+          path="/dashboard"
           element={
-            
-            
-              <LoginPage />
-            
+            <TechProvider>
+              {" "}
+              <DashboardPage />
+            </TechProvider>
           }
         ></Route>
-        <Route path="/register" element={<RegisterPage />}></Route>
-        <Route path="/dashboard" element={ <TechProvider> <DashboardPage /></TechProvider> }></Route>
       </Routes>
     </>
   );
