@@ -13,9 +13,11 @@ export function UserProvider({ children }) {
 
   let checkToken = window.localStorage.getItem("@TOKEN");
 
+
   useEffect(() => {
+    let userToken = window.localStorage.getItem("@TOKEN")
     let userId = window.localStorage.getItem("@USERID");
-    userId && navigate("/dashboard");
+    userToken && navigate("/dashboard");
 
     async function getUser() {
       try {
