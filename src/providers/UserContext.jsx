@@ -14,10 +14,10 @@ export function UserProvider({ children }) {
   let checkToken = window.localStorage.getItem("@TOKEN");
 
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     let userId = window.localStorage.getItem("@USERID");
-    !userId && navigate("/");
+    userId && navigate("/dashboard");
 
     async function getIdUser() {
       try {
