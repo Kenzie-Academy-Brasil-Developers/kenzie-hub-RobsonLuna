@@ -13,12 +13,13 @@ export function UserProvider({ children }) {
 
   let checkToken = window.localStorage.getItem("@TOKEN");
 
-
+  const navigate = useNavigate();
+  
   useEffect(() => {
     let userId = window.localStorage.getItem("@USERID");
     !userId && navigate("/");
 
-    async function getUser() {
+    async function getIdUser() {
       try {
         userId = JSON.parse(userId);
 
@@ -27,7 +28,7 @@ export function UserProvider({ children }) {
         setUserData(response.data);
       } catch (error) {}
     }
-    getUser();
+    getIdUser();
   }, []);
   
 
@@ -56,7 +57,7 @@ export function UserProvider({ children }) {
 
 
 
-  const navigate = useNavigate();
+  
   function registerPage() {
     navigate("/register");
   }
