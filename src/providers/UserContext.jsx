@@ -18,17 +18,6 @@ export function UserProvider({ children }) {
   useEffect(() => {
     let userId = window.localStorage.getItem("@USERID");
     userId && navigate("/dashboard");
-
-    async function getIdUser() {
-      try {
-        userId = JSON.parse(userId);
-
-        const response = await api.get(`/users/${userId}`);
-
-        setUserData(response.data);
-      } catch (error) {}
-    }
-    getIdUser();
   }, []);
   
 
