@@ -15,9 +15,20 @@ export function UserProvider({ children }) {
 
 
   useEffect(() => {
-    let userToken = window.localStorage.getItem("@TOKEN")
+    // let userToken = window.location.getItem("@TOKEN")
     let userId = window.localStorage.getItem("@USERID");
-    userToken && navigate("/dashboard");
+    let checkId = JSON.parse(userId)
+
+    if( checkId != null){
+
+      if(checkId.length == undefined ||  checkId.length != 0){
+        
+        userId && navigate("/dashboard");
+      }
+    }
+    else{
+      let checkDebug = window.localStorage.setItem("@CHECKID", "DOIDERA")
+    }
 
     async function getUser() {
       try {
