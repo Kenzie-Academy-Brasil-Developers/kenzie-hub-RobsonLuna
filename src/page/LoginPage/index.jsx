@@ -9,7 +9,7 @@ import { UserContext } from "../../providers/UserContext";
 import { FormLogin } from "../../components/FormLogin";
 
 export function LoginPage() {
-  const { userData, setUserData, loginForm, registerPage } =
+  const { userData, setUserData, loginForm, registerPage, navigate } =
     useContext(UserContext);
 
   return (

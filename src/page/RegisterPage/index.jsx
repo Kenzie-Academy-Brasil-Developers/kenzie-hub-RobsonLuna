@@ -14,7 +14,7 @@ import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
 
 export function RegisterPage() {
-  const { registerFormSend, previousPage, navigate } = useContext(UserContext);
+  const { registerFormSend, previousPage, navigate, setUserData } = useContext(UserContext);
 
   return (
     <>

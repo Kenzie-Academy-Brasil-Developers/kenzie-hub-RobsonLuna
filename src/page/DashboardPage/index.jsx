@@ -8,7 +8,7 @@ import { AddTechModal } from "../../components/AddTechModal";
 import { EditTechModal } from "../../components/EditTechModal";
 
 export function DashboardPage() {
-  const { userData, setUserData } = useContext(UserContext);
+  const { userData, setUserData, navigate } = useContext(UserContext);
   const {
     editModal,
     editTech,
